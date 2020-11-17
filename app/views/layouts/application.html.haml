@@ -12,18 +12,20 @@
 
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
-    
+    = stylesheet_link_tag 'bootstrap.min', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'bootstrap.min', 'data-turbolinks-track' => true
+
 
     = csrf_meta_tags
 
   %body
+    
+    = render 'shared/header'
     %main
-      = render 'shared/header'
-
       - flash.each do |key, value|
         = content_tag :div, content_tag(:p, value), id: "#{key}" unless value.blank?
 
       = yield
 
-      = render 'shared/footer'
+    = render 'shared/footer'
     
