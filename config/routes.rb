@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :customers
   # static pages
   get 'home', to: 'home#home'
   get 'contact', to: 'home#contact'

@@ -16,11 +16,26 @@
 
  @import url('https://fonts.googleapis.com/css?family=Roboto');
 
+$primary: rgb(212, 212, 212);
+
  html, body {
      font-family: 'Roboto', Arial, Helvetica, sans-serif;
  }
 
  /* Header */
  .main-header {
-     
+    nav {
+        height: 75px;
+    }
+
+    margin-bottom: 20px;
+ }
+
+ .main-footer {
+     height: 60px;
+     text-align: center;
+ }
+
+ main {
+     min-height: 90vh;
  }

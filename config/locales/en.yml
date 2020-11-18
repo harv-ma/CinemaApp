@@ -37,10 +37,10 @@ en:
   home:
     home:
       title: Cinema Books
-      sub_title: Book a ticket NOW!
+      sub_title: Book a ticket now!
     contact:
       title: Contact Us
-      contact_us: Complete the following form to get in touch.
+      sub_title: Complete the following form to get in touch.
       name: "Name:"
       enter_name: Enter your name
       email: "Email:"
