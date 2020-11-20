@@ -12,5 +12,16 @@ test.delete if test
 customers = Customer.create([
     forename: 'Harvey',
     surname: 'M-A',
+    phonenumber: '12345678',
+    email: 'hm00929@surrey.ac.uk',
+    password: ''
+])
+
+test = Customer.where(phonenumber: '12345678').first
+test.delete if test
+
+rooms = Room.create([
+    forename: 'Harvey',
+    surname: 'M-A',
     phonenumber: '12345678'
 ])

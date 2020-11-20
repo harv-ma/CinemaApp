@@ -1,0 +1,27 @@
+%h1 Listing showings
+
+%table
+  %thead
+    %tr
+      %th Starttime
+      %th Finishtime
+      %th Film
+      %th Room
+      %th
+      %th
+      %th
+
+  %tbody
+    - @showings.each do |showing|
+      %tr
+        %td= showing.startTime
+        %td= showing.finishTime
+        %td= showing.film
+        %td= showing.room
+        %td= link_to 'Show', showing
+        %td= link_to 'Edit', edit_showing_path(showing)
+        %td= link_to 'Destroy', showing, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Showing', new_showing_path

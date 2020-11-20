@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Starttime:
+  = @showing.startTime
+%p
+  %b Finishtime:
+  = @showing.finishTime
+%p
+  %b Film:
+  = @showing.film
+%p
+  %b Room:
+  = @showing.room
+
+= link_to 'Edit', edit_showing_path(@showing)
+\|
+= link_to 'Back', showings_path

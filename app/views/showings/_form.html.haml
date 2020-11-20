@@ -1,0 +1,22 @@
+= form_for @showing do |f|
+  - if @showing.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@showing.errors.count, "error")} prohibited this showing from being saved:"
+      %ul
+        - @showing.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :startTime
+    = f.date_select :startTime
+  .field
+    = f.label :finishTime
+    = f.date_select :finishTime
+  .field
+    = f.label :film
+    = f.text_field :film
+  .field
+    = f.label :room
+    = f.text_field :room
+  .actions
+    = f.submit 'Save'
