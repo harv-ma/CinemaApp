@@ -1,8 +1,10 @@
 require 'bcrypt'
 
 class Customer < ApplicationRecord
+    validates :forename, :surname, :phonenumber etc
+    
 
-    include BCrypt
+    has_many :booking
 
     def show
         

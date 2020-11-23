@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @film.title
+%p
+  %b Synopsis:
+  = @film.synopsis
+%p
+  %b Rating:
+  = @film.rating
+
+= link_to 'Edit', edit_film_path(@film)
+\|
+= link_to 'Back', films_path

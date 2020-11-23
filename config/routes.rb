@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :films
   resources :showings
   # static pages
   get 'home', to: 'home#home'

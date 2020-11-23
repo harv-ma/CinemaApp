@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_18_173418) do
+ActiveRecord::Schema.define(version: 2020_11_20_205550) do
+
+  create_table "bookings", force: :cascade do |t|
+    t.integer "showing_id"
+    t.integer "customer_id"
+    t.integer "seatNumber"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_bookings_on_customer_id"
+    t.index ["showing_id"], name: "index_bookings_on_showing_id"
+  end
 
   create_table "customers", force: :cascade do |t|
     t.string "forename", null: false
@@ -22,9 +32,28 @@ ActiveRecord::Schema.define(version: 2020_11_18_173418) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "films", force: :cascade do |t|
+    t.string "title"
+    t.string "synopsis"
+    t.integer "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "rooms", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "showings", force: :cascade do |t|
+    t.date "startTime"
+    t.date "finishTime"
+    t.integer "film_id"
+    t.integer "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["film_id"], name: "index_showings_on_film_id"
+    t.index ["room_id"], name: "index_showings_on_room_id"
   end
 
 end
