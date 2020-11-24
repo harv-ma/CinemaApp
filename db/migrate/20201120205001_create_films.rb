@@ -9,3 +9,4 @@ class CreateFilms < ActiveRecord::Migration[5.2]
     end
   end
 end
+PosterURL, Language, Release Date

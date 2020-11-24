@@ -1,19 +1,19 @@
 Rails.application.routes.draw do
-  
+  #resources
   resources :films
   resources :showings
-  # static pages
+
+
+  # stand-alone pages
   get 'home', to: 'home#home'
   get 'contact', to: 'home#contact'
 
   # forms
   post 'request_contact', to: 'home#request_contact'
 
-  #resources
 
+
+  # root
   root 'home#home'
-  
-  # 404
-  get '*unmatched_route', to: 'application#render_404'
 
 end

@@ -3,6 +3,8 @@
 %p
   %b Title:
   = @film.title
+- if @film.poster.attached?
+  %img{:src => "#{url_for(@film.poster)}"}
 %p
   %b Synopsis:
   = @film.synopsis

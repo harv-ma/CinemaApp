@@ -15,5 +15,8 @@
   .field
     = f.label :rating
     = f.number_field :rating
+  .field
+    = f.label "Poster Image"
+    = f.file_field :poster
   .actions
     = f.submit 'Save'
