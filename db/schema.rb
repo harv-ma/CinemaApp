@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2020_11_24_170600) do
     t.string "title"
     t.string "synopsis", null: false
     t.decimal "rating", default: "0.0", null: false
+    t.decimal "duration", precision: 3, scale: 2, null: false
     t.string "Language", null: false
     t.date "Release_date", null: false
     t.datetime "created_at", null: false
@@ -69,10 +70,9 @@ ActiveRecord::Schema.define(version: 2020_11_24_170600) do
   end
 
   create_table "showings", force: :cascade do |t|
-    t.date "startTime"
-    t.date "finishTime"
-    t.integer "film_id"
-    t.integer "room_id"
+    t.datetime "startTime", null: false
+    t.integer "film_id", null: false
+    t.integer "room_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["film_id"], name: "index_showings_on_film_id"

@@ -3,8 +3,8 @@
 %table
   %thead
     %tr
-      %th Starttime
-      %th Finishtime
+      %th ID
+      %th Start Time
       %th Film
       %th Room
       %th
@@ -14,13 +14,13 @@
   %tbody
     - @showings.each do |showing|
       %tr
+        %td= showing.id
+        %td= showing.film['title']
         %td= showing.startTime
-        %td= showing.finishTime
-        %td= showing.film
-        %td= showing.room
-        %td= link_to 'Show', showing
+        %td= showing.room['id']
+        %td= link_to 'View', showing
         %td= link_to 'Edit', edit_showing_path(showing)
-        %td= link_to 'Destroy', showing, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to 'Delete', showing, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 

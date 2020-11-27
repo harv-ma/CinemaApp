@@ -1,3 +1,4 @@
+= @showing['id']
 = form_for @showing do |f|
   - if @showing.errors.any?
     #error_explanation
@@ -8,15 +9,12 @@
 
   .field
     = f.label :startTime
-    = f.date_select :startTime
-  .field
-    = f.label :finishTime
-    = f.date_select :finishTime
+    = f.datetime_select :startTime
   .field
     = f.label :film
-    = f.text_field :film
+    = f.collection_select(:film_id, Film.all, :id, :title)
   .field
     = f.label :room
-    = f.text_field :room
+    = f.collection_select(:room_id, Film.all, :id, :id)
   .actions
     = f.submit 'Save'

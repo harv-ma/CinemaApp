@@ -1,17 +1,14 @@
 %p#notice= notice
 
 %p
-  %b Starttime:
+  %b Start Time:
   = @showing.startTime
 %p
-  %b Finishtime:
-  = @showing.finishTime
-%p
   %b Film:
-  = @showing.film
+  = @showing.film['title']
 %p
   %b Room:
-  = @showing.room
+  = @showing.room['id']
 
 = link_to 'Edit', edit_showing_path(@showing)
 \|

@@ -1,2 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+one:
+  id: 1
+  numberOfSeats: 120
+  WheelChair_Access: true
+
+two:
+  id: 2
+  numberOfSeats: 80
+  WheelChair_Access: false

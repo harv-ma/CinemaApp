@@ -1,10 +1,5 @@
 class Film < ApplicationRecord
-    # ID, Title, Synopsis, Rating, Language, Release_date
-    
-
-
-
-
+    # ID, Title, Synopsis, Rating, Language, Release_date, duration
 
 
 
