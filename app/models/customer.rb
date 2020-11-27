@@ -2,7 +2,7 @@ require 'bcrypt'
 
 class Customer < ApplicationRecord
     # ID, Forename, Surname, PhoneNumber, Email, Password \(o-o)/
-    validates :forename, :surname, :phonenumber # to be finished
+    #validates :forename, :surname, :phonenumber # to be finished
     
     # before_action :set_customer, only: [:create]
 
