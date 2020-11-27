@@ -1,6 +1,6 @@
 class Film < ApplicationRecord
-    # ID, Title, Synopsis, Rating
-    # to be added: PosterURL, Language, Release Date
+    # ID, Title, Synopsis, Rating, Language, Release_date
+    
     has_one_attached :poster
 
 

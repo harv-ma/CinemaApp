@@ -55,15 +55,17 @@ ActiveRecord::Schema.define(version: 2020_11_24_170600) do
 
   create_table "films", force: :cascade do |t|
     t.string "title"
-    t.string "synopsis"
-    t.integer "rating"
+    t.string "synopsis", null: false
+    t.integer "rating", default: 0, null: false
+    t.string "Language", null: false
+    t.date "Release_date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "rooms", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer "numberOfSeats", null: false
+    t.boolean "WheelChair_Access", null: false
   end
 
   create_table "showings", force: :cascade do |t|

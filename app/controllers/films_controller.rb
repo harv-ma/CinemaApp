@@ -27,7 +27,7 @@ class FilmsController < ApplicationController
   # POST /films.json
   def create
     @film = Film.new(film_params)
-    @film.poster.attach(params[:poster])
+    
     respond_to do |format|
       if @film.save
         format.html { redirect_to @film, notice: 'Film was successfully created.' }
@@ -71,6 +71,6 @@ class FilmsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def film_params
-      params.require(:film).permit(:title, :synopsis, :rating, :poster)
+      params.require(:film).permit(:title, :synopsis, :rating, :Language, :Release_date, :poster)
     end
 end

@@ -11,7 +11,12 @@
 %p
   %b Rating:
   = @film.rating
-
+%p
+  %b Language:
+  = @film.Language
+%p
+  %b Release Date:
+  = @film.Release_date
 = link_to 'Edit', edit_film_path(@film)
 \|
 = link_to 'Back', films_path
