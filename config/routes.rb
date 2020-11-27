@@ -3,6 +3,13 @@ Rails.application.routes.draw do
   resources :films
   resources :showings
 
+  # customers
+
+
+
+  # bookings
+  
+
 
   # stand-alone pages
   get 'home', to: 'home#home'
