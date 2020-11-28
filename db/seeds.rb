@@ -114,3 +114,12 @@ showing = Showing.create(
 )
 
 # END
+
+# Devise Seeds
+
+user = User.new
+user.email = 'hm00929@surrey.ac.uk'
+user.encrypted_password = '#$taawktljasktlw4aaglj'
+user.save!
+
+# END
