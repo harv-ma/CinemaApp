@@ -9,6 +9,8 @@
 # test = Customer.where(phonenumber: '12345678').first
 # test.delete if test
 
+#  export RUBYOPT='-W:no-deprecated'
+
 #
 #   DB Must be dropped before seeding, as for
 #   foreign key constraints to succeed order matters
@@ -117,9 +119,33 @@ showing = Showing.create(
 
 # Devise Seeds
 
+admin = User.new
+admin.forename = 'Harvey'
+admin.surname = 'M-A'
+admin.phonenumber = '077777777'
+admin.email = 'hm00929@surrey.ac.uk'
+admin.password = 'password'
+admin.password_confirmation = 'password'
+admin.admin = true
+admin.save!
+
 user = User.new
-user.email = 'hm00929@surrey.ac.uk'
-user.encrypted_password = '#$taawktljasktlw4aaglj'
+user.forename = 'Testuser'
+user.surname = 'Smith'
+user.phonenumber = '0777213123'
+user.email = 'example@example.com'
+user.password = 'password'
+user.password_confirmation = 'password'
+user.admin = false
 user.save!
+
+# u = User.create(
+#     id: 1,
+#     forename: 'Harvey',
+#     surname: 'M-A',
+#     phonenumber: '07777777777',
+#     email: 'hm00929@surrey.ac.uk',
+#     encrypted_password:'$2a$12$ADEQfg58i8fOngzF/pmbK.fmm/GW3xwxVIvIYLznbwtXDTxkSSUW2',
+# )
 
 # END
