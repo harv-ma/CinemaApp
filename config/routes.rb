@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  # Devise
+  devise_for :users
+
+
   #resources
   resources :films
   resources :showings
@@ -8,7 +12,7 @@ Rails.application.routes.draw do
 
 
   # bookings
-  
+  resources :bookings
 
 
   # stand-alone pages

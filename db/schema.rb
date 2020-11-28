@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_24_170600) do
+ActiveRecord::Schema.define(version: 2020_11_28_103153) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -34,9 +34,9 @@ ActiveRecord::Schema.define(version: 2020_11_24_170600) do
   end
 
   create_table "bookings", force: :cascade do |t|
-    t.integer "showing_id"
-    t.integer "customer_id"
-    t.integer "seatNumber"
+    t.integer "showing_id", null: false
+    t.integer "customer_id", null: false
+    t.integer "seatNumber", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["customer_id"], name: "index_bookings_on_customer_id"
@@ -77,6 +77,18 @@ ActiveRecord::Schema.define(version: 2020_11_24_170600) do
     t.datetime "updated_at", null: false
     t.index ["film_id"], name: "index_showings_on_film_id"
     t.index ["room_id"], name: "index_showings_on_room_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end
