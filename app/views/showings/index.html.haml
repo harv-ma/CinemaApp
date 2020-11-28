@@ -1,27 +1,28 @@
-%h1 Listing showings
+%div{'class' => 'container'}
+  %h1 Listing showings
 
-%table
-  %thead
-    %tr
-      %th ID
-      %th Start Time
-      %th Film
-      %th Room
-      %th
-      %th
-      %th
-
-  %tbody
-    - @showings.each do |showing|
+  %table{'class' => 'table mt-3'}
+    %thead{'class' => 'thead-dark'}
       %tr
-        %td= showing.id
-        %td= showing.film['title']
-        %td= showing.startTime
-        %td= showing.room['id']
-        %td= link_to 'View', showing
-        %td= link_to 'Edit', edit_showing_path(showing)
-        %td= link_to 'Delete', showing, method: :delete, data: { confirm: 'Are you sure?' }
+        %th{'class' => 'col'} ID
+        %th{'class' => 'col'} Film
+        %th{'class' => 'col'} Start Time
+        %th{'class' => 'col'} Room
+        %th{'class' => 'col'}
+        %th{'class' => 'col'}
+        %th{'class' => 'col'}
 
-%br
+    %tbody
+      - @showings.each do |showing|
+        %tr
+          %th{'scope' => 'row'}= showing.id
+          %td= showing.film['title']
+          %td= "#{showing.startTime.strftime('%m/%d/%Y')} #{showing.startTime.strftime('%I:%M%p')}"
+          %td= showing.room['id']
+          %td= link_to 'View', showing, class: 'btn btn-primary'
+          %td= link_to 'Edit', edit_showing_path(showing), class: 'btn btn-primary'
+          %td= link_to 'Delete', showing, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary'
 
-= link_to 'New Showing', new_showing_path
+  %br
+
+  = link_to 'New Showing', new_showing_path, class: 'btn btn-primary'

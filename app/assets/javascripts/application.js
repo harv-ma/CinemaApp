@@ -16,3 +16,11 @@
 //= require_tree .
 //= require jquery
 //= require bootstrap
+
+$( document ).ready(function() {
+    $('.close').on("click", function () {
+        $(this).parents('div').fadeOut();
+    });
+
+
+});

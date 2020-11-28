@@ -1,15 +1,24 @@
-%p#notice= notice
+%div{'class' => 'container'}
+  %div{'class' => 'row'}
+    %div{'class' => 'col-5'}
+      - if @showing.film.poster.attached?
+        %img{:src => "#{url_for(@showing.film.poster)}"}
+      - else
+        %p "No image available"
+    %div{'class' => 'col-7'}
+      %h1= @showing.film['title']
+      %div{'class' => 'mt-2'}
+        %h4
+          = "Start Time: "
+          %span= @showing.startTime.strftime('%m/%d/%Y')
+          = " at "
+          %span=  @showing.startTime.strftime('%I:%M%p')
+        %h4= "Duration: #{@showing.film.duration}hours"
+        %h5= "Room: #{@showing.room.id}"
+        %p= @showing.film.synopsis
+%div{'class' => 'mt-3'}
+  - if user_signed_in?
+    - if current_user.admin?
+      = link_to 'Edit', edit_showing_path(@showing), class: 'btn btn-primary'
 
-%p
-  %b Start Time:
-  = @showing.startTime
-%p
-  %b Film:
-  = @showing.film['title']
-%p
-  %b Room:
-  = @showing.room['id']
-
-= link_to 'Edit', edit_showing_path(@showing)
-\|
-= link_to 'Back', showings_path
+  = link_to 'Back', showings_path, class: 'btn btn-primary'

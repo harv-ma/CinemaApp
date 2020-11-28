@@ -25,7 +25,13 @@
     = render 'shared/header'
     %main
       - flash.each do |key, value|
-        = content_tag :div,  content_tag(:p, value, class: "alert alert-danger",), id: "#{key}" unless value.blank?
+        -if key == 'notice'
+          %div{'class' => 'alert alert-success', 'id' => key}
+            = value
+        - else
+          %div{'class' => 'alert alert-danger', 'id' => key}
+            = value
+        
 
       = yield
 

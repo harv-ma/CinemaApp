@@ -1,7 +1,13 @@
-%h1 Editing showing
+%div{'class' => 'container'}
 
-= render 'form'
+    %h4
+        = "Showing: "
+        %span{'class' => 'bold'}= "#{@showing.film.title}"
+        =  " at "
+        %span{'class' => 'bold'}= @showing.startTime.strftime('%m/%d/%Y')
+        = " "
+        %span{'class' => 'bold'}=  @showing.startTime.strftime('%I:%M%p')
 
-= link_to 'Show', @showing
-\|
-= link_to 'Back', showings_path
+    = render 'form'
+
+    //= link_to 'Back', showings_path, class: 'btn btn-primary'
