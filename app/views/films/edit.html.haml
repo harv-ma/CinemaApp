@@ -1,7 +1,7 @@
-%h1 Editing film
+%div{'class' => 'container'}
+    %h1 Editing film
 
-= render 'form'
+    = render 'form'
 
-= link_to 'Show', @film
-\|
-= link_to 'Back', films_path
+    = link_to 'Show', @film, class: 'btn btn-primary'
+    = link_to 'Back', films_path, class: 'btn btn-primary'

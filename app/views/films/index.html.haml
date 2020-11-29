@@ -1,29 +1,29 @@
-%h1 Listing films
+%div{'class' => 'container-fluid'}
+  %h1 Listing films
 
-%table
-  %thead
-    %tr
-      %th Title
-      %th Synopsis
-      %th Rating
-      %th Duration
-      %th Language
-      %th
-      %th
-      %th
+  %table{'class' => 'table table-hover mt-3'}
+    %thead{'class' => 'thead-dark'}
+      %tr{'class' => 'd-flex'}
+        %th{'class' => 'col-2'} Title
+        %th{'class' => 'col-3'} Synopsis
+        %th{'class' => 'col-1'} Rating
+        %th{'class' => 'col-1'} Duration
+        %th{'class' => 'col-2'} Language
+        %th{'class' => 'col-3'}
 
-  %tbody
-    - @films.each do |film|
-      %tr
-        %td= film.title
-        %td= film.synopsis
-        %td= film.rating
-        %td= film.duration
-        %td= film.Language
-        %td= link_to 'Show', film
-        %td= link_to 'Edit', edit_film_path(film)
-        %td= link_to 'Destroy', film, method: :delete, data: { confirm: 'Are you sure?' }
+    %tbody
+      - @films.each do |film|
+        %tr{'class' => 'd-flex'}
+          %th{'class' => 'col-2', 'scope' => 'row'}= film.title
+          %td{'class' => 'col-3'}= "#{film.synopsis[0..120]}..."
+          %td{'class' => 'col-1'}= film.rating
+          %td{'class' => 'col-1'}= film.duration
+          %td{'class' => 'col-2'}= film.Language
+          %td{'class' => 'col-3'}
+            = link_to 'Show', film, class: 'btn btn-primary'
+            = link_to 'Edit', edit_film_path(film), class: 'btn btn-primary'
+            = link_to 'Delete', film, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary'
 
-%br
+  %br
 
-= link_to 'New Film', new_film_path
+  = link_to 'New Film', new_film_path, class: 'btn btn-primary'

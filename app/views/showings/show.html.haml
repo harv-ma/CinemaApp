@@ -21,4 +21,4 @@
     - if current_user.admin?
       = link_to 'Edit', edit_showing_path(@showing), class: 'btn btn-primary'
 
-  = link_to 'Back', showings_path, class: 'btn btn-primary'
+  = link_to 'Back', film_path(@showing.film), class: 'btn btn-primary'

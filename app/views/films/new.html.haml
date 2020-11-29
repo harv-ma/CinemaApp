@@ -1,5 +1,6 @@
-%h1 New film
+%div{'class' => 'container'}
+    %h1 New film
 
-= render 'form'
+    = render 'form'
 
-= link_to 'Back', films_path
+    = link_to 'Back', films_path, class: 'btn btn-primary'

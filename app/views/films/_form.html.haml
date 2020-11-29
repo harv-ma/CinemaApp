@@ -5,27 +5,27 @@
       %ul
         - @film.errors.full_messages.each do |message|
           %li= message
-
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :synopsis
-    = f.text_field :synopsis
-  .field
-    = f.label :rating
-    = f.number_field :rating, step: 0.01
-  .field
-    = f.label :duration
-    = f.number_field :duration, step: 0.01
-  .field
-    = f.label :Language
-    = f.text_field :Language
-  .field
-    = f.label :Release_date
-    = f.date_field :Release_date
-  .field
-    = f.label "Poster Image"
-    = f.file_field :poster
-  .actions
-    = f.submit 'Save'
+  %div{'class' => 'form-group'}
+    .field
+      = f.label :title
+      = f.text_field :title, class: 'form-control'
+    .field
+      = f.label :synopsis
+      = f.text_field :synopsis, class: 'form-control'
+    .field
+      = f.label :rating
+      = f.number_field :rating, step: 0.01, class: 'form-control'
+    .field
+      = f.label :duration
+      = f.number_field :duration, step: 0.01, class: 'form-control'
+    .field
+      = f.label :Language
+      = f.text_field :Language, class: 'form-control'
+    .field
+      = f.label :Release_date
+      = f.date_field :Release_date, class: 'form-control'
+    .field
+      = f.label "Poster Image"
+      = f.file_field :poster, class: 'form-control-file'
+    .actions
+      = f.submit 'Save', class: 'btn btn-primary float-right'

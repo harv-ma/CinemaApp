@@ -1,6 +1,8 @@
 class ShowingsController < ApplicationController
   before_action :set_showing, only: [:show, :edit, :update, :destroy]
 
+
+
   # GET /showings
   # GET /showings.json
   def index
