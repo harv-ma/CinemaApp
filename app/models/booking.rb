@@ -1,5 +1,5 @@
 class Booking < ApplicationRecord
-  # ID, ShowingID, CustomerID, SeatNumber
+  # ID, Showing, Customer, SeatNumber
 
   # Validations
 

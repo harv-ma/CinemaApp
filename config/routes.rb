@@ -12,7 +12,6 @@ Rails.application.routes.draw do
 
 
   # bookings
-  resources :bookings
 
 
   # stand-alone pages

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_28_113611) do
+ActiveRecord::Schema.define(version: 2020_12_01_144934) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2020_11_28_113611) do
   create_table "bookings", force: :cascade do |t|
     t.integer "showing_id", null: false
     t.integer "customer_id", null: false
-    t.integer "seatNumber", null: false
+    t.integer "seatNumber"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["customer_id"], name: "index_bookings_on_customer_id"

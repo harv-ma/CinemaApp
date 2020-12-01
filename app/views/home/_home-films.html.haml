@@ -1,14 +1,16 @@
 %div{'class' => 'row m-5'}
     %h2 Films over the next week
-    %div{'class' => 'col-12 week-films-container'}
-        - @showings = Showing.getNextWeekFilms
-        - @showings.each do |showing|
-            %div{'class' => 'week-film-item'}
-                %a{:href => "#{film_path(showing.film)}"}
-                    %div
-                        - if showing.film.poster.attached?
-                            %img{:src => "#{url_for(showing.film.poster)}"}
-                        - else
-                            %p "No image available"
-                        %span= showing.film.title
-
+    - @showings = Showing.getNextWeekFilms
+    - if @showings.present?
+        %div{'class' => 'col-12 week-films-container'}
+            - @showings.each do |showing|
+                %div{'class' => 'week-film-item'}
+                    %a{:href => "#{film_path(showing.film)}"}
+                        %div
+                            - if showing.film.poster.attached?
+                                %img{:src => "#{url_for(showing.film.poster)}"}
+                            - else
+                                %p "No image available"
+                            %span= showing.film.title
+    - else
+        %h1 Sorry there are no showings for the current week
