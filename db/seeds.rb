@@ -70,7 +70,49 @@ film3 = Film.create(
 
 film3.poster.attach(io: File.open('app/assets/images/film3.jpg'), filename: 'film3.jpg')
 
+film4 = Film.create(
+    title: 'Violet Evergarden: Eternity and the Auto Memory Doll poster',
+    synopsis: "Violet Evergarden tutors a young lady at a private women's academy, but still grieves for the only person who ever brought her happiness.",
+    rating: 6,
+    Language: 'Japanese',
+    duration: 2, # hours
+    Release_date: '2019-09-3',
+)
 
+film4.poster.attach(io: File.open('app/assets/images/violetevergarden.jpg'), filename: 'violetevergarden.jpg')
+
+film5 = Film.create(
+    title: 'Fireworks',
+    synopsis: 'This film tells the story of a schoolgirl who finds a pretty transparent ball by the sea, on the day of a fireworks display of a religious festival in a seaside town in Japan. She plans to run away from home to escape from her unhappy home, as her mother is about to remarry for the third time.',
+    rating: 8.7,
+    Language: 'Japanese',
+    duration: 1.8, # hours
+    Release_date: '2017-09-18',
+)
+
+film5.poster.attach(io: File.open('app/assets/images/fireworks.jpg'), filename: 'fireworks.jpg')
+
+film6 = Film.create(
+    title: 'A Silent Voice',
+    synopsis: 'When a grade school student with impaired hearing is bullied mercilessly, she transfers to another school. Years later, one of her former tormentors sets out to make amends.',
+    rating: 9,
+    Language: 'Japanese',
+    duration: 1.5, # hours
+    Release_date: '2017-03-15',
+)
+
+film6.poster.attach(io: File.open('app/assets/images/silentvoice.jpg'), filename: 'silentvoice.jpg')
+
+film7 = Film.create(
+    title: 'The Garden of Words',
+    synopsis: 'When a lonely teenager skips his morning lessons to sit in a lovely garden, he meets a mysterious older woman who shares his feelings of alienation.',
+    rating: 7.5,
+    Language: 'Japanese',
+    duration: 1, # hours
+    Release_date: '2013-04-28',
+)
+
+film7.poster.attach(io: File.open('app/assets/images/gardenofwords.jpg'), filename: 'gardenofwords.jpg')
 # END
 
 # Room Seeds

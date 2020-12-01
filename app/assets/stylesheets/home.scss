@@ -2,3 +2,36 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.week-films-container {
+    overflow: auto;
+    white-space: nowrap;
+    //overflow-y: hidden;
+    height: 600px;
+    position: relative;
+    
+
+    .week-film-item {
+        height: 650px;
+        word-wrap: break-word;
+        display: inline-block;
+
+        position: relative;
+        top:0;
+
+        text-align: center;
+        padding: 4px;
+        margin: 0;
+        img {
+            margin: auto 0;
+            height: 100%;
+            max-height: 500px;
+            width: auto;
+        }
+        span {
+            display: block;
+            width: 150px;
+            color: black;
+            text-decoration: none;
+        }
+    }
+}

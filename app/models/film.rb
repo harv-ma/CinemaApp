@@ -1,7 +1,7 @@
 class Film < ApplicationRecord
     # ID, Title, Synopsis, Rating, Language, Release_date, duration
 
-
+    
 
     
     # Use of active_storage gem
