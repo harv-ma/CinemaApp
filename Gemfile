@@ -62,9 +62,10 @@ end
 #gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'haml-rails'
-gem 'bootstrap-sass', '~>3.3.6'
+# gem 'bootstrap-sass'
 gem 'jquery-rails'
 #gem 'modernizr-rails'
 gem 'rails-controller-testing'
 gem 'sprockets-rails'
 gem 'devise'
+gem 'bootstrap', '4.5.3'

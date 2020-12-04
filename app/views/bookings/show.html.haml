@@ -1,0 +1,44 @@
+- @showing = @booking.showing
+- @film = @booking.showing.film
+- @room = @booking.showing.room
+
+%div{'class' => 'container'}
+    %div{'class' => 'row booking-details'}
+        %div{'class' => 'col-3 booking-img'}
+            //image
+            - if @film.poster.attached?
+                %img{:src => "#{url_for(@film.poster)}"}
+            - else
+                %p "No image available"
+        %div{'class' => 'col-6 booking-film'}
+            // film details
+            %div{'class' => 'booking-film-header'}
+                %h1= @film.title
+            %div{'class' => 'booking-film-content'}
+                %p
+                    %span= "Duration "
+                    = "#{@film.duration} hours"
+                %p
+                    %span= "Language "
+                    = @film.Language
+                %p
+                    %span= "Synopsis "
+                    = @film.synopsis
+        %div{'class' => 'col-3 booking-showing'}
+            // showing details
+            %div{'class' => 'booking-showing-header'}
+                %h2= "Details"
+                %span= "When "
+                %p{'class' => 'text-right'}
+                    = "#{@showing.startTime.strftime('%m/%d/%Y')} "
+                    %br
+                    = "#{@showing.startTime.strftime('%I:%M%p')}"
+    %div{'class' => 'row booking-form'}
+        %div{'class' => 'col-12'}
+            - if user_signed_in?
+                %h1= "Yo you signed in"
+            - else
+                %div{'class' => 'mt-5 text-center bg-warning p-4'}
+                    %h2= "You must have an account to make a booking!"
+                    %p= "Login below, or sign-up to make a booking"
+                    = render('shared/login-partial')

@@ -9,10 +9,13 @@
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
- *
  *= require_tree .
  *= require_self
  */
+
+
+
+ @import "bootstrap";
 
  @import url('https://fonts.googleapis.com/css?family=Roboto');
 
@@ -20,11 +23,11 @@ $primary: rgb(212, 212, 212);
 
  html, body {
      font-family: 'Roboto', Arial, Helvetica, sans-serif;
-     background-color: black;
+     
  }
 
  /* Header */
- .main-header {
+.main-header {
     nav {
         height: 75px;
     }
@@ -36,22 +39,21 @@ $primary: rgb(212, 212, 212);
     }
 
     margin-bottom: 20px;
- }
+}
 
- .main-footer {
+.main-footer {
      height: 60px;
      text-align: center;
- }
+}
 
- main {
+main {
      min-height: 90vh;
- }
+}
 
- .bold {
+.bold {
      font-weight: 800;
- }
+}
 
-a, p, span, div {
-    text-decoration: none;
-    color: black;
+.modal-backdrop.in {
+    background: rgba(0,0,0,0.5);
 }

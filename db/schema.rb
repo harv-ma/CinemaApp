@@ -35,12 +35,12 @@ ActiveRecord::Schema.define(version: 2020_12_01_144934) do
 
   create_table "bookings", force: :cascade do |t|
     t.integer "showing_id", null: false
-    t.integer "customer_id", null: false
+    t.integer "user_id", null: false
     t.integer "seatNumber"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["customer_id"], name: "index_bookings_on_customer_id"
     t.index ["showing_id"], name: "index_bookings_on_showing_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "films", force: :cascade do |t|
@@ -57,6 +57,9 @@ ActiveRecord::Schema.define(version: 2020_12_01_144934) do
   create_table "rooms", force: :cascade do |t|
     t.integer "numberOfSeats", null: false
     t.boolean "WheelChair_Access", null: false
+    t.text "seats", null: false
+    t.integer "columns", null: false
+    t.integer "rows", null: false
   end
 
   create_table "showings", force: :cascade do |t|

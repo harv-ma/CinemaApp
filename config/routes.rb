@@ -6,13 +6,12 @@ Rails.application.routes.draw do
   #resources
   resources :films
   resources :showings
-
-  # customers
-
-
-
-  # bookings
-
+  resource :booking
+  
+  def after_sign_in_path_for(user)
+    stored_location_for(user) || super
+  end
+  
 
   # stand-alone pages
   get 'home', to: 'home#home'

@@ -1,0 +1,15 @@
+- @seats = @showing.room.seats
+- @rows = @showing.room.rows
+- @cols = @showing.room.columns
+%h1= @seats[5]
+%div{'class' => 'seat-container'}
+    %table{'class' => 'table'}
+        %tbody
+        - @rows.times do |i|
+            %tr
+            - @cols.times do |j|
+                %th
+                - if @seats[(i * @rows) + j] == 0
+                    %input{'type' => 'radio', 'class' => '', 'name' => 'seat-selection'}
+                - else
+                    %input{'type' => 'radio', 'class' => 'disabled', 'name' => 'seat-selection'}

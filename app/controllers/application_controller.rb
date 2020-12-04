@@ -1,5 +1,9 @@
 class ApplicationController < ActionController::Base
-     # CSRF protection
+    before_action :store_user_location!, if: :storable_location?
+
+    # before_action :authenticate_user!
+    
+    # CSRF protection
     protect_from_forgery with: :exception
 
     # Default to London time zone
@@ -25,5 +29,12 @@ class ApplicationController < ActionController::Base
             devise_parameter_sanitizer.permit(:sign_up, keys: [:forename, :surname, :phonenumber, :email, :password])
             devise_parameter_sanitizer.permit(:account_update, keys: [:forename, :surname, :phonenumber, :email, :password, :current_password])
         end
-    
+        def storable_location?
+            request.get? && is_navigational_format? && !devise_controller? && !request.xhr? 
+        end
+        
+        def store_user_location!
+            # :user is the scope we are authenticating
+            store_location_for(:user, request.fullpath)
+        end
 end
