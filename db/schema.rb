@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_01_144934) do
+ActiveRecord::Schema.define(version: 2020_12_04_153718) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(version: 2020_12_01_144934) do
   create_table "bookings", force: :cascade do |t|
     t.integer "showing_id", null: false
     t.integer "user_id", null: false
-    t.integer "seatNumber"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["showing_id"], name: "index_bookings_on_showing_id"
@@ -57,9 +56,17 @@ ActiveRecord::Schema.define(version: 2020_12_01_144934) do
   create_table "rooms", force: :cascade do |t|
     t.integer "numberOfSeats", null: false
     t.boolean "WheelChair_Access", null: false
-    t.text "seats", null: false
-    t.integer "columns", null: false
-    t.integer "rows", null: false
+    t.string "format", default: "A"
+  end
+
+  create_table "seats", force: :cascade do |t|
+    t.integer "booking_id", null: false
+    t.integer "row", null: false
+    t.integer "col", null: false
+    t.boolean "disablity_access", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_seats_on_booking_id"
   end
 
   create_table "showings", force: :cascade do |t|

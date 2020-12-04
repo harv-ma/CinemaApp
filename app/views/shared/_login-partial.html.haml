@@ -1,7 +1,14 @@
-= form_tag session_path(:user) do
-  = text_field_tag 'user[email]'
-  = password_field_tag 'user[password]'
-  = check_box_tag 'user[remember_me]'
-  = label_tag 'user[remember_me]', 'Remember me'
-  %button Sign in
-  = link_to "Forgot your password?", new_password_path(:user)
+= form_for(:user, :url => session_path(:user), html: {class: 'form-group' })do |f|
+    %div{'class' => 'container'}
+        %div{'class' => 'row'}
+            %div{'class' => 'col-12'}
+                = f.label :email
+                = f.text_field :email, class: 'form-control'
+            %div{'class' => 'col-12'}
+                = f.label :password
+                = f.password_field :password, class: 'form-control'
+            %div{'class' => 'col-12'}
+                = f.label :remember_me
+                = f.check_box :remember_me
+        = f.submit 'Sign in', class: 'btn'
+        = link_to "Forgot your password?", new_password_path(:user), class: 'btn'

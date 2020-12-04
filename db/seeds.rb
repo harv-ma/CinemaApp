@@ -116,35 +116,6 @@ film7.poster.attach(io: File.open('app/assets/images/gardenofwords.jpg'), filena
 # END
 
 # Room Seeds
-
-seats1 = %w(
-    0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-    0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-    0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-    0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-    0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-    0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-)
-
-rows1 = 6
-cols1 = 17
-
-seats2 = %w(
-    0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-    0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-    0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-    0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-    0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-    0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-    0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-    0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-)
-
-rows2 = 8
-cols2 = 21
-
-
-
 test = Room.where(id: 1).first
 test.delete if test
 
@@ -152,9 +123,7 @@ room1 = Room.create(
     id: 1,
     numberOfSeats: 120,
     WheelChair_Access: true,
-    seats: seats1,
-    rows: rows1,
-    columns: cols1
+    format: 'A'
 )
 
 test = Room.where(id: 2).first
@@ -164,9 +133,7 @@ room2 = Room.create(
     id: 2,
     numberOfSeats: 80,
     WheelChair_Access: false,
-    seats: seats2,
-    rows: rows1,
-    columns: cols1
+    format: 'A'
 )
 
 # END
@@ -232,9 +199,19 @@ user.save!
 booking1 = Booking.create(
     showing: showing,
     user: user,
-    seatNumber: 12
 )
 
+
+
+# END
+
+# Seats Seeds
+seat = Seat.create(
+    booking_id: booking1.id,
+    row: 4,
+    col: 3,
+    disablity_access: false
+)
 
 
 # END

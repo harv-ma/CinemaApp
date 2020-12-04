@@ -1,9 +1,5 @@
 class BookingsController < ApplicationController
 
-    def show
-        @booking = Booking.all.first
-    end
-
 
     def create
         @booking = Booking.new(booking_params)

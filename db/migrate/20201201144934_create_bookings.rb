@@ -3,7 +3,6 @@ class CreateBookings < ActiveRecord::Migration[5.2]
     create_table :bookings do |t|
       t.belongs_to :showing, foreign_key: true, null: false
       t.belongs_to :user, foreign_key: true,  null: false
-      t.integer :seatNumber
 
       t.timestamps
     end

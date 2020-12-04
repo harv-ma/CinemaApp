@@ -1,7 +1,10 @@
 class ShowingsController < ApplicationController
-  before_action :set_showing, only: [:show, :edit, :update, :destroy]
+  before_action :set_showing, only: [:show, :edit, :update, :destroy, :book]
 
-  
+
+  def book
+
+  end
 
   # GET /showings
   # GET /showings.json
