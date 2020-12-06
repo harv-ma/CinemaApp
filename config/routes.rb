@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resource :booking
   
   get '/showings/:id/book', to: 'showings#book'
+  post '/showings/:id',     to: 'seats#getShowingSeats'
 
   def after_sign_in_path_for(user)
     stored_location_for(user) || super

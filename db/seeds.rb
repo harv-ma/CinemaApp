@@ -207,7 +207,8 @@ booking1 = Booking.create(
 
 # Seats Seeds
 seat = Seat.create(
-    booking_id: booking1.id,
+    booking: booking1,
+    showing: showing,
     row: 4,
     col: 3,
     disablity_access: false

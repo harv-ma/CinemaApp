@@ -1,13 +1,15 @@
-//
-// This partial is to setup the seating input so a user can select a seat they would like to book.
-//
+%div{'class' => 'container-fluid seats-container', 'id' => 'seats-partial', 'data-showing' => "#{@showing.id}"}
+    %div{'class' => 'row'}
+        // Seat area
+        %div{'class' => 'col-12'}
+            %div{'id' => 'seat-map'}
+                %div{'class' => 'front-indicator'} Front
+            %div{'id' => 'legend'}
+    %div{'class' => 'row'}
+        // Booking details area
+        %div{'class' => 'col-4'}
+            %div{'id' => 'booking-details'}
+                = "Total: $"
+                %span{'id' => 'total'}0
+                
 
-// setup variables
-
-- @seats = @showing.room.seats
-
-
-
-
-%div{'class' => 'container'}
-    = @seats

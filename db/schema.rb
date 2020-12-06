@@ -61,12 +61,14 @@ ActiveRecord::Schema.define(version: 2020_12_04_153718) do
 
   create_table "seats", force: :cascade do |t|
     t.integer "booking_id", null: false
+    t.integer "showing_id", null: false
     t.integer "row", null: false
     t.integer "col", null: false
     t.boolean "disablity_access", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["booking_id"], name: "index_seats_on_booking_id"
+    t.index ["showing_id"], name: "index_seats_on_showing_id"
   end
 
   create_table "showings", force: :cascade do |t|
