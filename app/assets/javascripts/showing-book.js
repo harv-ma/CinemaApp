@@ -1,15 +1,21 @@
 
-
-$(function() {
+/**
+ * turbolinks:load must be listened for instead of ready method
+ * as rails turbolinks cache the script and stop it from running from 
+ * a redirect.
+ * 
+ * 
+ * 
+ * JQuery Seat Charts MIT License
+ */
+$( document ).on('turbolinks:load', function() {
     
-    // Ajax get the room layout along with seats taken
+    
     var id = $('#seats-partial').data('showing');
     var seatLayout = undefined;
-    var $cart = $('#selected-seats');
-    var $counter = $('#counter');
-    var $total = $('#total');
-    var sc = undefined;
+    
 
+    // Ajax get the room layout along with seats taken
     $.ajax({
       url: `/showings/${id}`,
       method: 'POST',
@@ -17,8 +23,10 @@ $(function() {
       success: (data) => {
           var unavailableSeats = data.seats;
           seatLayout = data.layout;
+          console.log(seatLayout, unavailableSeats);
           setupJqueryChart(seatLayout, unavailableSeats);
           console.log("Success!");
+          
         },
         error: (e) => {
             console.log('Error');
@@ -28,6 +36,11 @@ $(function() {
       
 });
 
+/**
+ * This methods takes a seat number and returns the respective
+ * column and row values. As this is what should be stored later.
+ * @param {Integer} seatNumber 
+ */
 function calculateRowCol(seatNumber) {
   var id = undefined;
   var seatNum = String(seatNumber);
@@ -51,20 +64,26 @@ function recalculateTotal(sc) {
     return total;
 }
 
-
+/**
+ * Render the seat selection chart to the screen, and setup handlers.
+ * @param {Array} seatLayout : e.g. ['sss_sss_sss']
+ * @param {Array} unavailableSeats : e.g. ['2_7']
+ */
 function setupJqueryChart(seatLayout, unavailableSeats) {
-  var firstSeatLabel = 1;
-        
-  sc = $('#seat-map').seatCharts({
+    var firstSeatLabel = 1;
+    var $cart = $('#selected-seats');
+    var $counter = $('#counter');
+    var $total = $('#total');
+    var sc = $('#seat-map').seatCharts({
       map: seatLayout,
       seats: {
           s: {
-            price   : 40,
+          price: 12.99,
             classes : 'standard-seat-class', //your custom CSS class
             category: 'Standard'
           },
           d: {
-            price   : 40,
+            price   : 12.99,
             classes : 'disabled-seat-class', //your custom CSS class
             category: 'Disabled'
           }         
