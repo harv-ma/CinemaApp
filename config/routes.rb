@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   # Devise
   devise_for :users
 
@@ -6,10 +7,11 @@ Rails.application.routes.draw do
   #resources
   resources :films
   resources :showings
-  resource :booking
+  resources :bookings, :except => [:edit, :new]
   
   get '/showings/:id/book', to: 'showings#book'
   post '/showings/:id',     to: 'seats#getShowingSeats'
+  post '/showings/:id/book',     to: 'bookings#create'
 
   def after_sign_in_path_for(user)
     stored_location_for(user) || super

@@ -32,8 +32,6 @@ $( document ).on('turbolinks:load', function() {
             console.log('Error');
           }
       });
-
-      
 });
 
 /**
@@ -62,6 +60,34 @@ function recalculateTotal(sc) {
     });
     
     return total;
+}
+
+/**
+ * Takes the list of seats from Jquery seat charts,
+ * formats them, then tries to book them.
+ * @param {Array} seats 
+ */
+function bookSeats(seats) {
+  return new Promise(function (resolve, reject) {
+    $.ajax({
+      url: `/showings/${id}/book`,
+      method: 'POST',
+      dataType: 'JSON',
+      success: (data) => {
+
+
+
+
+
+          resolve(data);
+        },
+        error: (e) => {
+            reject(e);
+          }
+      });
+        
+    
+});
 }
 
 /**

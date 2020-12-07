@@ -1,9 +1,10 @@
 class ShowingsController < ApplicationController
   before_action :set_showing, only: [:show, :edit, :update, :destroy, :book]
 
+  
 
+  # Booking page showings/:id/book
   def book
-
   end
 
   # GET /showings

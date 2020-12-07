@@ -1,5 +1,8 @@
+%p#notice= notice
+- @showing = @booking.showing
 - @film = @showing.film
 - @room = @showing.room
+
 
 %div{'class' => 'container'}
     %div{'class' => 'row booking-details'}
@@ -32,18 +35,9 @@
                     = "#{@showing.startTime.strftime('%m/%d/%Y')} "
                     %br
                     = "#{@showing.startTime.strftime('%I:%M%p')}"
-    %div{'class' => 'row booking-form'}
-        %div{'class' => 'col-12'}
-            - if user_signed_in?
-                = render('seating-partial')
 
-            
-            
-            
-            
-            
-            - else
-                %div{'class' => 'mt-5 bg-warning p-4'}
-                    %h2= "You must have an account to make a booking!"
-                    %p= "Login below, or sign-up to make a booking"
-                    = render('shared/login-partial')
+
+// could add custom seat chart to show the booked seats
+
+
+= link_to 'Back', bookings_path

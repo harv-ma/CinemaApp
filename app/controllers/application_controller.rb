@@ -24,6 +24,20 @@ class ApplicationController < ActionController::Base
         end
     end
 
+    def validateAdmin
+        
+        if !user_signed_in?
+            redirect_to "/users/sign_in"
+        else
+            respond_to do |format|
+                format.html { render file: "#{Rails.root}/public/403", layout: false, status: :not_found }
+                format.xml  { head :not_found }
+                format.any  { head :not_found }
+            end
+        end
+
+    end
+
     private
         def configure_permitted_parameters
             devise_parameter_sanitizer.permit(:sign_up, keys: [:forename, :surname, :phonenumber, :email, :password])

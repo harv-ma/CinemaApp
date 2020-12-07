@@ -133,7 +133,7 @@ room2 = Room.create(
     id: 2,
     numberOfSeats: 80,
     WheelChair_Access: false,
-    format: 'A'
+    format: 'B'
 )
 
 # END
@@ -152,11 +152,11 @@ showing = Showing.create(
 test = Showing.where(id: 2).first
 test.delete if test
 
-showing = Showing.create(
+showing1 = Showing.create(
     id: 2,
     startTime: '2020-01-21 12:25:00',
     film: film2,
-    room: room1
+    room: room2
 )
 
 # END
@@ -183,15 +183,6 @@ user.password_confirmation = 'password'
 user.admin = false
 user.save!
 
-# u = User.create(
-#     id: 1,
-#     forename: 'Harvey',
-#     surname: 'M-A',
-#     phonenumber: '07777777777',
-#     email: 'hm00929@surrey.ac.uk',
-#     encrypted_password:'$2a$12$ADEQfg58i8fOngzF/pmbK.fmm/GW3xwxVIvIYLznbwtXDTxkSSUW2',
-# )
-
 # END
 
 # Booking Seeds
@@ -200,6 +191,13 @@ booking1 = Booking.create(
     showing: showing,
     user: user,
 )
+
+booking2 = Booking.create(
+    showing: showing1,
+    user: admin,
+)
+
+
 
 
 

@@ -6,5 +6,13 @@
         "sssss_sssss_sssss",
         "sssss_sssss_sssss",
         "ddddd_sssss_ddddd"
+    ],
+    "B": [
+        "sssss_sssss_sssss_sssss",
+        "sssss_sssss_sssss_sssss",
+        "sssss_sssss_sssss_sssss",
+        "sssss_sssss_sssss_sssss",
+        "sssss_sssss_sssss_sssss",
+        "ddddd_ddddd_ddddd_ddddd"
     ]
 }

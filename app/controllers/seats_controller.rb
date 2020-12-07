@@ -1,9 +1,10 @@
 class SeatsController < ApplicationController
     require 'json'    
 
-
+    before_action :authenticate_user!
 
     def getShowingSeats
+
         # Read in layouts file and parse it into JSON variable
         file = File.read('app/assets/config/seat_layouts.json')
         f = JSON.parse(file)
@@ -14,11 +15,12 @@ class SeatsController < ApplicationController
         # ['1_2', '4_1', '7_1', '7_2'] unavailable format
         unavailableSeats = []
         seats = Seat.where(showing_id: @showing) # get all seats for this showing
-        # loop through and setup unavailable format of each seat e.g. (row, col) -> "row_col"
-        seats.each do |n|
-            unavailableSeats.push("#{n.row}_#{n.col}")
+        if seats.length != 0
+            # loop through and setup unavailable format of each seat e.g. (row, col) -> "row_col"
+            seats.each do |n|
+                unavailableSeats.push("#{n.row}_#{n.col}")
+            end
         end
-
         # Get the seat layout for this showing from the room model
         room = Room.where(id: @showing.room.id).first
         seatLayout = room['format']
