@@ -78,9 +78,31 @@ $( document ).on('turbolinks:load', function() {
           console.log("Success!");
           
           $('#make-booking').on('click', async function() {
+            $('#alerts').css( {'display': 'none'} );
             // disable button
+            $('#make-booking').text( 'Please Wait...' );
+            $('#make-booking').addClass('disabled');
+            $('#make-booking').prop('disabled', true);
             
-            await bookSeats(id);
+            let outcome = await bookSeats(id);
+
+            if (outcome) {
+              window.location.href = "/showings"; // redirect to booking confirmation page with details
+
+              console.log("Booking made");
+              $('.booking-form').css({'display': 'none'});
+              $('#alerts').addClass( 'bg-success' );
+              $('#alerts').text( 'Booking made!' );
+              $('#alerts').css( {'display': 'block'} );
+
+            } else {
+              console.log("Unable to make booking");
+              $('#alerts').css( {'display': 'block'} );
+              $('#alerts').text( 'Unable to make booking!' );
+              $('#make-booking').text( 'Book' );
+              $('#make-booking').removeClass('disabled');
+              $('#make-booking').prop('disabled', false);
+            }
 
           });
         },
@@ -141,7 +163,7 @@ function bookSeats(id) {
         },
         error: (e) => {
           console.log("ERROR: Unable to book seats!");
-            reject(e);
+          reject(e);
           }
       });
     }).catch (() => {});
