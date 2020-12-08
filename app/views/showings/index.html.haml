@@ -1,28 +1,49 @@
-%div{'class' => 'container-fluid'}
-  %h1 Listing showings
+%h1 Current Showings
+// Current showings sorted by date with filters
 
-  %table{'class' => 'table table-hover mt-3 table-custom-showings'}
-    %thead{'class' => 'thead-dark'}
-      %tr{'class' => 'd-flex'}
-        %th{'class' => 'col-3'} ID
-        %th{'class' => 'col-3'} Film
-        %th{'class' => 'col-2'} Start Time
-        %th{'class' => 'col-1'} Room
-        %th{'class' => 'col-1'}
-        %th{'class' => 'col-1'}
-        %th{'class' => 'col-1'}
+%div{'id' => 'slider'}
+  %a{ 'class' => 'control_next'}= ">"
+  %a{ 'class' => 'control_prev'}= "<"
+  %ul
+    - @films.each do |film|
+      %li
+        %a{'href' => "#{film_url(film)}"}
+          %span= film.title
+          %img{:src => "#{url_for(film.poster)}"}
+          
+      
+      -# = film.title
+      -# %img{:src => "#{url_for(film.poster)}"}
 
-    %tbody
-      - @showings.each do |showing|
-        %tr{'class' => 'd-flex'}
-          %th{'class' => 'col-3', 'scope' => 'row'}= showing.id
-          %td{'class' => 'col-3'}= showing.film['title']
-          %td{'class' => 'col-2'}= "#{showing.startTime.strftime('%m/%d/%Y')} #{showing.startTime.strftime('%I:%M%p')}"
-          %td{'class' => 'col-1'}= showing.room['id']
-          %td{'class' => 'col-1'}= link_to 'View', showing, class: 'btn btn-primary'
-          %td{'class' => 'col-1'}= link_to 'Edit', edit_showing_path(showing), class: 'btn btn-primary'
-          %td{'class' => 'col-1'}= link_to 'Cancel', showing, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary'
+%div{'class' => 'd-flex'}
+  
+  
+// continue with this finish slider/carousel with jquery etc
+// then add the rest, so: films on left with showings for each to the right
+// in a row 
 
-  %br
 
-  = link_to 'New Showing', new_showing_path, class: 'btn btn-primary'
+
+-# %table{'class' => 'table table-hover mt-3 table-custom-showings'}
+-#   %thead{'class' => 'thead-dark'}
+-#     %tr{'class' => 'd-flex'}
+-#       %th{'class' => 'col-3'} ID
+-#       %th{'class' => 'col-3'} Film
+-#       %th{'class' => 'col-2'} Start Time
+-#       %th{'class' => 'col-1'} Room
+-#       %th{'class' => 'col-1'}
+-#       %th{'class' => 'col-1'}
+-#       %th{'class' => 'col-1'}
+
+-#   %tbody
+-#     - @showings.each do |showing|
+-#       %tr{'class' => 'd-flex'}
+-#         %th{'class' => 'col-3', 'scope' => 'row'}= showing.id
+-#         %td{'class' => 'col-3'}= showing.film['title']
+-#         %td{'class' => 'col-2'}= "#{showing.startTime.strftime('%m/%d/%Y')} #{showing.startTime.strftime('%I:%M%p')}"
+-#         %td{'class' => 'col-1'}= showing.room['id']
+-#         %td{'class' => 'col-1'}= link_to 'View', showing, class: 'btn btn-primary'
+-#         %td{'class' => 'col-1'}= link_to 'Edit', edit_showing_path(showing), class: 'btn btn-primary'
+-#         %td{'class' => 'col-1'}= link_to 'Cancel', showing, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary'
+
+-# %br

@@ -5,9 +5,11 @@ Rails.application.routes.draw do
 
 
   #resources
+  get '/showings/admin', to: 'showings#indexAdmin'
   resources :films
   resources :showings
-  resources :bookings, :except => [:edit, :new]
+  
+  resources :bookings, :only => [:index, :show, :create, :destroy]
   
   get '/showings/:id/book', to: 'showings#book'
   post '/showings/:id',     to: 'seats#getShowingSeats'

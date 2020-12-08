@@ -2,15 +2,23 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
+
   # GET /bookings
   # GET /bookings.json
   def index
-    @bookings = Booking.all
+    if current_user.admin
+      @bookings = Booking.all
+    else
+      @bookings = Booking.where(user: current_user)
+    end
   end
 
   # GET /bookings/1
   # GET /bookings/1.json
   def show
+    if @booking.user != current_user
+      render_403
+    end
   end
 
   # GET /bookings/new
@@ -35,20 +43,7 @@ class BookingsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /bookings/1
-  # PATCH/PUT /bookings/1.json
-  def update
-    respond_to do |format|
-      if @booking.update(booking_params)
-        format.html { redirect_to @booking, notice: 'Booking was successfully updated.' }
-        format.json { render :show, status: :ok, location: @booking }
-      else
-        format.html { render :edit }
-        format.json { render json: @booking.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
+ 
   # DELETE /bookings/1
   # DELETE /bookings/1.json
   def destroy
@@ -68,5 +63,5 @@ class BookingsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def booking_params
       params.require(:booking).permit(:showing, :customer, :seatNumber)
-  end
+    end
 end
