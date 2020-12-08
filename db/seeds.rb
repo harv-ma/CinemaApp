@@ -209,7 +209,13 @@ seat = Seat.create(
     showing: showing,
     row: 4,
     col: 3,
-    disablity_access: false
+)
+
+seat2 = Seat.create(
+    booking: booking2,
+    showing: showing,
+    row: 6,
+    col: 5,
 )
 
 

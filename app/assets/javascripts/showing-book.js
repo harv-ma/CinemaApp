@@ -53,11 +53,16 @@ $(document).on('turbolinks:load', () => {
  * 
  * JQuery Seat Charts MIT License
  */
+
+var sc = null;
+var seats = [];
+
 $( document ).on('turbolinks:load', function() {
     
     
     var id = $('#seats-partial').data('showing');
     var seatLayout = undefined;
+    
     
 
     // Ajax get the room layout along with seats taken
@@ -72,12 +77,21 @@ $( document ).on('turbolinks:load', function() {
           setupJqueryChart(seatLayout, unavailableSeats);
           console.log("Success!");
           
+          $('#make-booking').on('click', async function() {
+            // disable button
+            
+            await bookSeats(id);
+
+          });
         },
         error: (e) => {
             console.log('Error');
           }
       });
 });
+
+
+
 
 /**
  * This methods takes a seat number and returns the respective
@@ -112,27 +126,25 @@ function recalculateTotal(sc) {
  * formats them, then tries to book them.
  * @param {Array} seats 
  */
-function bookSeats(seats) {
+function bookSeats(id) {
+
   return new Promise(function (resolve, reject) {
     $.ajax({
       url: `/showings/${id}/book`,
       method: 'POST',
       dataType: 'JSON',
+      data: {
+        seats: seats
+      },
       success: (data) => {
-
-
-
-
-
           resolve(data);
         },
         error: (e) => {
+          console.log("ERROR: Unable to book seats!");
             reject(e);
           }
       });
-        
-    
-});
+    }).catch (() => {});
 }
 
 /**
@@ -145,7 +157,7 @@ function setupJqueryChart(seatLayout, unavailableSeats) {
     var $cart = $('#selected-seats');
     var $counter = $('#counter');
     var $total = $('#total');
-    var sc = $('#seat-map').seatCharts({
+    sc = $('#seat-map').seatCharts({
       map: seatLayout,
       seats: {
           s: {
@@ -176,30 +188,32 @@ function setupJqueryChart(seatLayout, unavailableSeats) {
         },
         click: function () {
           if (this.status() == 'available') {
-            //let's create a new <li> which we'll add to the cart items
-            $('<li>'+this.data().category+' Seat # '+this.settings.label+': <b>$'+this.data().price+'</b> <a href="#" class="cancel-cart-item">[cancel]</a></li>')
-              .attr('id', 'cart-item-'+this.settings.id)
-              .data('seatId', this.settings.id)
-              .appendTo($cart);
+            console.log("Adding " + this.settings.id);
+            seats.push(this.settings.id)
             
-            /*
-            * Lets up<a href="https://www.jqueryscript.net/time-clock/">date</a> the counter and total
-            *
-            * .find function will not find the current seat, because it will change its stauts only after return
-            * 'selected'. This is why we have to add 1 to the length and the current seat price to the total.
-            */
+            
+            //let's create a new <li> which we'll add to the cart items
+            // $('<li>'+this.data().category+' Seat # '+this.settings.label+': <b>$'+this.data().price+'</b> <a href="#" class="cancel-cart-item">[cancel]</a></li>')
+            //   .attr('id', 'cart-item-'+this.settings.id)
+            //   .data('seatId', this.settings.id)
+            //   .appendTo($cart);
+           
             $counter.text(sc.find('selected').length+1);
             $total.text(recalculateTotal(sc)+this.data().price);
             
             return 'selected';
           } else if (this.status() == 'selected') {
-              //update the counter
-              $counter.text(sc.find('selected').length-1);
-              //and total
+            seats.splice(seats.indexOf(this.settings.id), 1);
+            
+            console.log(seats);
+            
+            // //update the counter
+            //   $counter.text(sc.find('selected').length-1);
+            //   //and total
               $total.text(recalculateTotal(sc)-this.data().price);
               
               //remove the item from our cart
-              $('#cart-item-'+this.settings.id).remove();
+              // $('#cart-item-'+this.settings.id).remove();
               
               //seat has been vacated
               return 'available';

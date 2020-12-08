@@ -27,10 +27,28 @@ class BookingsController < ApplicationController
   end
 
 
-  # POST /bookings
-  # POST /bookings.json
+  # POST /showings/:id/book
   def create
-    @booking = Booking.new(booking_params)
+    # make sure bookings do not exist and seats are not taken
+    id = params['id']
+    seats = params['seats']
+
+   
+
+    @booking = Booking.new(showing: Showing.find(id), user: current_user)
+
+    puts "Seats:"
+    puts seats
+
+    seats.each do |seat|
+      seatVal = seat.split('_')
+      puts seatVal
+      s = Seat.new(booking: @booking, showing: Showing.find(id), row: seatVal[0], col: seatVal[1])
+      if !s.save
+        raise "error"
+      end
+    end
+
 
     respond_to do |format|
       if @booking.save
@@ -62,6 +80,6 @@ class BookingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def booking_params
-      params.require(:booking).permit(:showing, :customer, :seatNumber)
+      params.require(:booking).permit(:id, :seats)
     end
 end
