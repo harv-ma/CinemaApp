@@ -21,20 +21,54 @@
 
 $primary: rgb(212, 212, 212);
 
+$rich_black: #070600;
+$grey: #cac9ff;
+$nice_red: #BA1B1D;
+$dark_red: #6B0F11;
+
  html, body {
      font-family: 'Roboto', Arial, Helvetica, sans-serif;
+     background-color: $rich_black;
      
  }
+
+.active {
+    border-bottom: 4px solid white;
+}
 
  /* Header */
 .main-header {
     nav {
         height: 75px;
+        background-color: $nice_red;
+        color: white;
+
+        .nav-link {
+            color: white;
+
+
+            
+        }
+
+        .navbar-brand {
+            color: white;
+            font-weight: 700;
+        }
     }
 
     .nav-two {
-        p, a {
+        p {
             margin: auto 5px;
+        }
+
+        .profile-button {
+            padding: 8px;
+            background-color: $rich_black;
+            color: white;
+            border-radius: 5px;
+            a {
+                color: white;
+            }
         }
     }
 
@@ -48,12 +82,4 @@ $primary: rgb(212, 212, 212);
 
 main {
      min-height: 90vh;
-}
-
-.bold {
-     font-weight: 800;
-}
-
-.modal-backdrop.in {
-    background: rgba(0,0,0,0.5);
 }

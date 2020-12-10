@@ -1,16 +1,16 @@
 %header
     %div{'class' => 'main-header'}
-        %nav{'class' => 'navbar navbar-expand-sm navbar-light bg-light'}
+        %nav{'class' => 'navbar navbar-expand-sm'}
             %a{'class' => 'navbar-brand', 'href' => '/'}= t('app_title')
             %div{'class' => 'collapse navbar-collapse', 'id' => 'navbarNav'}
                 %ul{'class' => 'navbar-nav'}
-                    %li{'class' => 'nav-item '}
-                        %a{'class' => 'nav-link', 'href' => '/'}Home
-                    %li{'class' => 'nav-item '}
+                    %li{'class' => "nav-item #{active_class('/')}"}
+                        %a{'class' => 'nav-link ', 'href' => '/'}Home
+                    %li{'class' => "nav-item #{active_class('/showings')}"}
                         %a{'class' => 'nav-link', 'href' => '/showings'}Showings
-                    %li{'class' => 'nav-item '}
+                    %li{'class' => "nav-item #{active_class('/films')}"}
                         %a{'class' => 'nav-link', 'href' => '/films'}Films
-                    %li{'class' => 'nav-item '}
+                    %li{'class' => "nav-item #{active_class('/contact')}"}
                         %a{'class' => 'nav-link', 'href' => '/contact'}Contact Us
             %ul{'class' => 'navbar-nav float-right nav-two'}
                 - if user_signed_in?
@@ -28,9 +28,7 @@
                             
                         
                     %li{'class' => 'nav-item ml-2'}
-                        = link_to 'Profile', edit_user_registration_path, class: "btn btn-outline-primary"
-                    %li{'class' => 'nav-item ml-2'}
-                        = link_to t('Logout'), destroy_user_session_path, method: 'delete', class: "btn btn-outline-primary"
+                        %p{'class' => 'profile-button'}= link_to 'Profile', '/users/show'
                 - else
                     %li{'class' => 'nav-item'}
                         = link_to 'Login', new_user_session_path, class: "btn btn-outline-primary"

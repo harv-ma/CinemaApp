@@ -1,0 +1,35 @@
+%h1{'class' => 'page-header'} My Profile
+
+
+%div{'class' => 'container'}
+    %h1{'class' => 'booking-header'} Your bookings
+    %div{'class' => 'row user-bookings-container'}
+        // user bookings
+        %div{'class' => 'col-12 d-flex user-booking user-header'}
+            %div{'class' => 'user-booking-time'}Start Time
+            %div{'class' => 'user-booking-title'}Film Title
+            %div{'class' => 'user-booking-room'}Room Number
+            %div{'class' => 'user-booking-seats'}Seats Booked
+  
+        - @bookings.each do |booking|
+            %div{'class' => 'col-12 d-flex user-booking'}
+                %div{'class' => 'user-booking-time'}
+                    = "#{booking.showing.startTime.strftime('%m/%d/%Y')} "
+                    %br
+                    = "#{booking.showing.startTime.strftime('%I:%M%p')}"
+                %div{'class' => 'user-booking-title'}
+                    = booking.showing.film.title
+                %div{'class' => 'user-booking-room'}
+                    = booking.showing.room.id
+                %div{'class' => 'user-booking-seats'}
+                    - seats = Seat.where(booking: booking)
+                    - seats.each do |seat|
+                        %span= "#{seat.id},"
+
+
+    %div{'class' => 'row'}
+        // might put something here
+    %div{'class' => 'row'}
+        %div{'class' => 'col-12 user-buttons'}
+            = link_to 'Edit Profile', 'edit', class: 'edit-profile-button'
+            = link_to t('Logout'), destroy_user_session_path, method: 'delete', class: 'logout-button'

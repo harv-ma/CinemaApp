@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   #resources
   get '/showings/admin', to: 'showings#indexAdmin'
+  get '/users/show', to: 'user#show'
   resources :films
   resources :showings
   

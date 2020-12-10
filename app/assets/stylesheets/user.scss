@@ -1,0 +1,80 @@
+// Place all the styles related to the User controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$rich_black: #070600;
+$grey: #434343;
+$nice_red: #BA1B1D;
+$dark_red: #6B0F11;
+
+.user-bookings-container {
+    height: 50vh;
+    overflow-y: scroll;
+    color: white;
+    background-color: $rich_black;
+    .user-booking {
+        height: 60px;
+        padding: 10px;
+        border-bottom: 3px solid $nice_red;
+        
+        &.user-header {
+            background-color: $dark_red;
+            padding: 10px;
+        }
+
+        .user-booking-time {
+            width: 20%;
+        }
+
+        .user-booking-title {
+            width: 30%;
+        }
+
+        .user-booking-room {
+            width: 10%;
+        }
+
+        .user-booking-seats {
+            width: 40%;
+        }
+    }
+}
+
+.page-header {
+    color: $nice_red;
+    margin: 25px auto;
+    text-align: center;
+    border-bottom: 5px solid $nice_red;
+    display: block;
+    width: 200px;
+}
+
+.booking-header {
+    font-size: 18pt;
+    color: $nice_red;
+    font-style: italic;
+}
+
+.user-buttons {
+    margin-top: 50px;
+
+    a {
+        margin: 0 10px;
+    }
+    .edit-profile-button {
+        background-color: $nice_red;
+        border-radius: 5px;
+        padding: 8px;
+        color: white;
+    }
+
+    .logout-button {
+        background-color: $nice_red;
+        border-radius: 5px;
+        padding: 8px;
+        color: white;
+    }
+}
+
+
+
