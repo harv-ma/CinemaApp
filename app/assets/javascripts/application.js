@@ -17,12 +17,3 @@
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
-
-
-
-
-$( document ).ready(function() {
-    $('.close').on("click", function () {
-        $(this).parents('div').fadeOut();
-    });
-});

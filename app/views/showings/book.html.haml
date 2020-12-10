@@ -1,3 +1,9 @@
+// Load our custom js script for this page
+- content_for :javascript_includes do
+    = javascript_include_tag '/assets/javascripts/showing-book.js', 'data-turbolinks-track' => true
+
+
+
 - @film = @showing.film
 - @room = @showing.room
 
@@ -37,13 +43,7 @@
     %div{'class' => 'row booking-form'}
         %div{'class' => 'col-12'}
             - if user_signed_in?
-                = render('rooms/seating-partial')
-
-            
-            
-            
-            
-            
+                = render('rooms/seating-partial') # Include seat block
             - else
                 %div{'class' => 'mt-5 bg-warning p-4'}
                     %h2= "You must have an account to make a booking!"
