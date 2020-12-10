@@ -1,3 +1,24 @@
 // Place all the styles related to the Booking controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.booking-success {
+    height: 350px;
+    background-color: rgb(66, 255, 66);
+    width: 85%;
+    margin: 30px auto;
+    position: relative;
+
+    .details {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        text-align: center;
+        p {
+            font-size: 35pt;
+            font-weight: 700;
+        }
+    }
+}

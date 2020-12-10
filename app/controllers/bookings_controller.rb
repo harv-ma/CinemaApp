@@ -3,6 +3,10 @@ class BookingsController < ApplicationController
   before_action :authenticate_user!
 
 
+  def success
+  end
+
+
   # GET /bookings
   # GET /bookings.json
   def index
@@ -33,13 +37,10 @@ class BookingsController < ApplicationController
     id = params['id']
     seats = params['seats']
 
-   
-
+    # Create the booking
     @booking = Booking.new(showing: Showing.find(id), user: current_user)
 
-    puts "Seats:"
-    puts seats
-
+    # Create seats for the booking
     seats.each do |seat|
       seatVal = seat.split('_')
       puts seatVal
@@ -49,11 +50,14 @@ class BookingsController < ApplicationController
       end
     end
 
+    data = {
+      :booking_id => @booking.id
+    }
 
     respond_to do |format|
       if @booking.save
         format.html { redirect_to @booking, notice: 'Booking was successfully created.' }
-        format.json { render :show, status: :created, location: @booking }
+        format.json { render json: data, status: :created, location: @booking }
       else
         format.html { render :new }
         format.json { render json: @booking.errors, status: :unprocessable_entity }

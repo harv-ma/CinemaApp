@@ -40,18 +40,32 @@ $( document ).on('turbolinks:load', function() {
             
             let outcome = await bookSeats(id);
 
-            if (outcome) {
-              window.location.href = "/showings"; // redirect to booking confirmation page with details
-
+            if (outcome != undefined) {
               console.log("Booking made");
               $('.booking-form').css({'display': 'none'});
-              $('#alerts').addClass( 'bg-success' );
-              $('#alerts').text( 'Booking made!' );
+              $('#alerts').removeClass( 'alert-danger' );
+              $('#alerts').addClass( 'booking-success' );
+              $('#alerts p').text( 'Booking successful!' );
+              $('#alerts span').text( 'You will be redirected to your booking momentarily.' );
               $('#alerts').css( {'display': 'block'} );
+              
+              
+              
+              setTimeout(
+                function() 
+                {
+                  window.location.href = `/bookings/${outcome}`; // redirect to booking confirmation page with details
+                }, 5000);
+
+              
+
+              
 
             } else {
               console.log("Unable to make booking");
               $('#alerts').css( {'display': 'block'} );
+              $('#alerts').addClass( 'alert-danger' );
+              $('#alerts').removeClass( 'booking-success' );
               $('#alerts').text( 'Unable to make booking!' );
               $('#make-booking').text( 'Book' );
               $('#make-booking').removeClass('disabled');
@@ -113,7 +127,7 @@ function bookSeats(id) {
         seats: seats
       },
       success: (data) => {
-          resolve(data);
+          resolve(data.booking_id);
         },
         error: (e) => {
           console.log("ERROR: Unable to book seats!");

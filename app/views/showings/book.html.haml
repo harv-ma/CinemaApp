@@ -32,8 +32,10 @@
                     = "#{@showing.startTime.strftime('%m/%d/%Y')} "
                     %br
                     = "#{@showing.startTime.strftime('%I:%M%p')}"
-    %div{'class' => 'row col-12 alert alert-danger', 'id' => 'alerts', 'style' => 'display: none;'}
-
+    %div{'class' => 'alert', 'id' => 'alerts', 'style' => 'display: none;'}
+        %div{'class' => 'details'}
+            %p 
+            %span
     %div{'class' => 'row booking-form'}
         %div{'class' => 'col-12'}
             - if user_signed_in?
