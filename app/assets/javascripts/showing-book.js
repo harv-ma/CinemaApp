@@ -38,6 +38,8 @@ $( document ).on('turbolinks:load', function() {
             $('#make-booking').addClass('disabled');
             $('#make-booking').prop('disabled', true);
             
+            console.log("Booking:", id);
+
             let outcome = await bookSeats(id);
 
             if (outcome != undefined) {
@@ -66,7 +68,7 @@ $( document ).on('turbolinks:load', function() {
               $('#alerts').css( {'display': 'block'} );
               $('#alerts').addClass( 'alert-danger' );
               $('#alerts').removeClass( 'booking-success' );
-              $('#alerts').text( 'Unable to make booking!' );
+              $('#alerts p').text( 'Unable to make booking!' );
               $('#make-booking').text( 'Book' );
               $('#make-booking').removeClass('disabled');
               $('#make-booking').prop('disabled', false);
@@ -178,7 +180,7 @@ function setupJqueryChart(seatLayout, unavailableSeats) {
         },
         click: function () {
           if (this.status() == 'available') {
-            console.log("Adding " + this.settings.id);
+            console.log("Adding ", this.settings);
             seats.push(this.settings.id)
             
             
