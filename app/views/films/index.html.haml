@@ -18,7 +18,7 @@
           %td{'class' => 'col-3'}= "#{film.synopsis[0..120]}..."
           %td{'class' => 'col-1'}= film.rating
           %td{'class' => 'col-1'}= film.duration
-          %td{'class' => 'col-2'}= film.Language
+          %td{'class' => 'col-2'}= film.language
           %td{'class' => 'col-3'}
             = link_to 'Show', film, class: 'btn btn-primary'
             = link_to 'Edit', edit_film_path(film), class: 'btn btn-primary'

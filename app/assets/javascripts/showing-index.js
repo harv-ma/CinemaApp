@@ -2,7 +2,7 @@ $(document).on('turbolinks:load', () => {
     console.log("Showing-index Loaded");
     var slideCount = $('#slider ul li').length;
     var slideWidth = 500;
-    var slideHeight = 1000;
+    var slideHeight = 800;
     var sliderUlWidth = slideCount * slideWidth;
   
     $('#slider').css({ width: slideWidth, height: slideHeight });

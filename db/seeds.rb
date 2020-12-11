@@ -33,9 +33,9 @@ film1 = Film.create(
     title: 'Weathering With You',
     synopsis: 'A boy runs away to Tokyo and befriends a girl who appears to be able to manipulate the weather.',
     rating: 10,
-    Language: 'Japanese',
+    language: 'Japanese',
     duration: 1.5, # hours
-    Release_date: '2020-11-06',
+    release_date: (Time.now + 1.day),
 )
 
 film1.poster.attach(io: File.open('app/assets/images/film1.jpg'), filename: 'film1.jpg')
@@ -48,9 +48,9 @@ film2 = Film.create(
     title: 'Promare',
     synopsis: 'Thirty years has passed since the appearance of Burnish, a race of flame-wielding mutant beings, who destroyed half of the world with fire. When a new group of aggressive mutants appears, a battle begins.',
     rating: 8.5,
-    Language: 'Japanese',
+    language: 'Japanese',
     duration: 2, # hours
-    Release_date: '2020-11-06',
+    release_date: (Time.now + 2.day),
 )
 
 film2.poster.attach(io: File.open('app/assets/images/film2.jpg'), filename: 'film2.jpg')
@@ -63,9 +63,9 @@ film3 = Film.create(
     title: 'Your Name',
     synopsis: 'Two teenagers share a profound, magical connection upon discovering they are swapping bodies. But things become even more complicated when the boy and girl decide to meet in person.',
     rating: 9,
-    Language: 'Japanese',
+    language: 'Japanese',
     duration: 1.5, # hours
-    Release_date: '2016-10-18',
+    release_date: (Time.now + 3.day),
 )
 
 film3.poster.attach(io: File.open('app/assets/images/film3.jpg'), filename: 'film3.jpg')
@@ -74,9 +74,9 @@ film4 = Film.create(
     title: 'Violet Evergarden: Eternity and the Auto Memory Doll poster',
     synopsis: "Violet Evergarden tutors a young lady at a private women's academy, but still grieves for the only person who ever brought her happiness.",
     rating: 6,
-    Language: 'Japanese',
+    language: 'Japanese',
     duration: 2, # hours
-    Release_date: '2019-09-3',
+    release_date: (Time.now + 4.day),
 )
 
 film4.poster.attach(io: File.open('app/assets/images/violetevergarden.jpg'), filename: 'violetevergarden.jpg')
@@ -85,9 +85,9 @@ film5 = Film.create(
     title: 'Fireworks',
     synopsis: 'This film tells the story of a schoolgirl who finds a pretty transparent ball by the sea, on the day of a fireworks display of a religious festival in a seaside town in Japan. She plans to run away from home to escape from her unhappy home, as her mother is about to remarry for the third time.',
     rating: 8.7,
-    Language: 'Japanese',
+    language: 'Japanese',
     duration: 1.8, # hours
-    Release_date: '2017-09-18',
+    release_date: (Time.now + 5.day),
 )
 
 film5.poster.attach(io: File.open('app/assets/images/fireworks.jpg'), filename: 'fireworks.jpg')
@@ -96,9 +96,9 @@ film6 = Film.create(
     title: 'A Silent Voice',
     synopsis: 'When a grade school student with impaired hearing is bullied mercilessly, she transfers to another school. Years later, one of her former tormentors sets out to make amends.',
     rating: 9,
-    Language: 'Japanese',
+    language: 'Japanese',
     duration: 1.5, # hours
-    Release_date: '2017-03-15',
+    release_date: (Time.now + 6.day),
 )
 
 film6.poster.attach(io: File.open('app/assets/images/silentvoice.jpg'), filename: 'silentvoice.jpg')
@@ -107,9 +107,9 @@ film7 = Film.create(
     title: 'The Garden of Words',
     synopsis: 'When a lonely teenager skips his morning lessons to sit in a lovely garden, he meets a mysterious older woman who shares his feelings of alienation.',
     rating: 7.5,
-    Language: 'Japanese',
+    language: 'Japanese',
     duration: 1, # hours
-    Release_date: '2013-04-28',
+    release_date: (Time.now + 7.day),
 )
 
 film7.poster.attach(io: File.open('app/assets/images/gardenofwords.jpg'), filename: 'gardenofwords.jpg')
@@ -144,7 +144,8 @@ test.delete if test
 
 showing = Showing.create(
     id: 1,
-    startTime: '2020-02-01 22:30:00',
+    startTime: '2020-02-01 16:30:00',
+    finishTime: '2020-02-01 18:00:00',
     film: film1,
     room: room1
 )
@@ -155,6 +156,7 @@ test.delete if test
 showing1 = Showing.create(
     id: 2,
     startTime: '2020-01-21 12:25:00',
+    finishTime: '2020-02-01 14:25:00',
     film: film2,
     room: room2
 )

@@ -12,13 +12,11 @@ class ShowingsController < ApplicationController
   def index
 
     # get all showings for next 7 days
-    @showings = Showing.where(startTime: (Time.now.midnight)..(Time.now.midnight + 7.day))
+    @showings = Showing.where(startTime: (Time.now.midnight)..(Time.now.midnight + 10.day))
     
     @films = @showings.map{ |s| s.film} # get only the film objects
     @films = @films.uniq { |f| f.title } # remove duplicates
 
-    
-    
   end
 
   def indexAdmin
@@ -43,6 +41,7 @@ class ShowingsController < ApplicationController
   # POST /showings.json
   def create
     @showing = Showing.new(showing_params)
+    @showing.finishTime = @showing.startTime + @showing.film.duration.hours
 
     respond_to do |format|
       if @showing.save

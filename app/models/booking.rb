@@ -2,8 +2,9 @@ class Booking < ApplicationRecord
   # ID, Showing, Customer, SeatNumber
 
   # Validations
-  validates :showing, presence: true
-  validates :user, presence: true
+  validates_associated :showing, presence: true
+  validates_associated :user, presence: true
+  validates_associated :seats, inverse_of: :booking, presence: true
 
   
   has_many :seat

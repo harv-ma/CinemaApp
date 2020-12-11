@@ -14,5 +14,10 @@
         "sssss_sssss_sssss_sssss",
         "sssss_sssss_sssss_sssss",
         "ddddd_ddddd_ddddd_ddddd"
+    ],
+    "C": [
+        "sssss_sssss_sssss",
+        "sssss_ddddd_sssss",
+        "sssss_sssss_sssss"
     ]
 }

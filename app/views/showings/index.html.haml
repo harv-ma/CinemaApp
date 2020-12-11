@@ -1,5 +1,5 @@
 %h1 Current Showings
-// Current showings sorted by date with filters
+-# Current showings sorted by date with filters
 
 %div{'id' => 'slider'}
   %a{ 'class' => 'control_next'}= ">"
@@ -15,6 +15,7 @@
       -# = film.title
       -# %img{:src => "#{url_for(film.poster)}"}
 
+%hr{'class' => 'custom-hr'}
 %div{'class' => 'd-flex'}
   
   
