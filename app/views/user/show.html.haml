@@ -11,26 +11,27 @@
             %div{'class' => 'user-booking-room'}Room Number
             %div{'class' => 'user-booking-seats'}Seats Booked
             %div{'class' => 'user-booking-view'}
-  
-        - @bookings.each do |booking|
+        - if @bookings.count != 0
+            - @bookings.each do |booking|
+                %div{'class' => 'col-12 d-flex user-booking'}
+                    %div{'class' => 'user-booking-time'}
+                        = "#{booking.showing.startTime.strftime('%m/%d/%Y')} "
+                        %br
+                        = "#{booking.showing.startTime.strftime('%I:%M%p')}"
+                    %div{'class' => 'user-booking-title'}
+                        = booking.showing.film.title
+                    %div{'class' => 'user-booking-room'}
+                        = booking.showing.room.id
+                    %div{'class' => 'user-booking-seats'}
+                        - seats = Seat.where(booking: booking)
+                        - seats.each do |seat|
+                            %span= "#{seat.seatNumber},"
+                    %div{'class' => 'user-booking-view'}
+                        %p{'class' => 'user-view-button'}
+                            = link_to 'View', booking_path(booking)
+        - else
             %div{'class' => 'col-12 d-flex user-booking'}
-                %div{'class' => 'user-booking-time'}
-                    = "#{booking.showing.startTime.strftime('%m/%d/%Y')} "
-                    %br
-                    = "#{booking.showing.startTime.strftime('%I:%M%p')}"
-                %div{'class' => 'user-booking-title'}
-                    = booking.showing.film.title
-                %div{'class' => 'user-booking-room'}
-                    = booking.showing.room.id
-                %div{'class' => 'user-booking-seats'}
-                    - seats = Seat.where(booking: booking)
-                    - seats.each do |seat|
-                        %span= "#{seat.seatNumber},"
-                %div{'class' => 'user-booking-view'}
-                    %p{'class' => 'user-view-button'}
-                        = link_to 'View', booking_path(booking)
-
-
+                %div{'class' => ''} You do not have any bookings.
     %div{'class' => 'row'}
         // might put something here
     %div{'class' => 'row'}

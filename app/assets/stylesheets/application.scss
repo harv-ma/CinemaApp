@@ -33,6 +33,7 @@ $dark_red: #6B0F11;
      
  }
 
+
 .active {
     border-bottom: 4px solid white;
 }
@@ -46,9 +47,6 @@ $dark_red: #6B0F11;
 
         .nav-link {
             color: white;
-
-
-            
         }
 
         .navbar-brand {
@@ -85,13 +83,32 @@ main {
      min-height: 90vh;
 }
 
-.back-button {
-   
+a.back-button {
     background-color: $nice_red;
     border-radius: 5px;
     padding: 8px;
     color: white;
     text-decoration: none;
+    margin: 20px 20px;
+}
+
+a.edit-button {
+    background-color: $nice_red;
+    border-radius: 5px;
+    padding: 8px;
+    color: white;
+    text-decoration: none;
+    margin: 20px 20px;
+}
+
+p.view-button {
+    background-color: $nice_red;
+    border-radius: 5px;
+    padding: 8px;
+    text-align: center;
+    a {
+        color: white;
+    }
     
 }
 

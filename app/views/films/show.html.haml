@@ -1,14 +1,14 @@
 %div{'class' => 'container'}
-  %div{'class' => 'row'}
-    %div{'class' => 'col-5'}
+  %div{'class' => 'row film-show'}
+    %div{'class' => 'col-5 film-img'}
       - if @film.poster.attached?
         %img{:src => "#{url_for(@film.poster)}"}
       - else
         %p "No image available"
-    %div{'class' => 'col-7'}
+    %div{'class' => 'col-7 film-title'}
       %h1= @film.title
       %div{'class' => 'row mt-2'}
-        %div{'class' => 'col-12'}
+        %div{'class' => 'col-12 film-details'}
           %p= @film.synopsis
           %h5= "Duration: #{@film.duration}hours"
           %h5= "Rating #{@film.rating}"
@@ -18,14 +18,15 @@
         %div{'class' => 'col-12'}
           %h3{'class' => 'text-center mt-3 mb-4'}= "Book a seat now:"
           %div{'class' => 'd-flex flex-column'}
+            %div{'class' => 'container'}
             - @test = Showing.where(film: @film)
             - @test.each do |showing|
-              %div{'class' => 'container'}
-                %div{'class' => 'row'}
-                  %p{'class' => 'col-10'}= "#{showing.startTime.strftime('%m/%d/%Y')} #{showing.startTime.strftime('%I:%M%p')}"
-                  %p{'class' => 'col-2'}= link_to 'View', showing, class: 'btn btn-primary'
+              %div{'class' => 'row'}
+                %p{'class' => 'col-10'}= "#{showing.startTime.strftime('%m/%d/%Y')} #{showing.startTime.strftime('%I:%M%p')}"
+                %p{'class' => 'col-2 view-button'}
+                  = link_to 'View', showing
 
 
         
-    = link_to 'Edit', edit_film_path(@film), class: 'btn btn-primary'
-    = link_to 'Back', films_path, class: 'btn btn-primary'
+    = link_to 'Edit', edit_film_path(@film), class: 'edit-button'
+    = link_to 'Back', films_path, class: 'back-button'

@@ -49,3 +49,5 @@
 
 
 = link_to 'Back', '/users/show', class: 'back-button'
+= link_to 'Cancel', @booking, method: :delete, data: { confirm: 'Are you sure?' }
+

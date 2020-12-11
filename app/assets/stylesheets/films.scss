@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$rich_black: #070600;
+$grey: #434343;
+$nice_red: #BA1B1D;
+$dark_red: #6B0F11;
 
 .film-showings-table {
     width: 100%;
@@ -9,4 +13,23 @@
 
 .modal-details h3 {
     font-size: 12pt;
+}
+
+.film-show {
+    .film-img {
+        img {
+            width: 100%;
+        }
+    }
+
+    .film-title {
+		h1 {
+			color: $nice_red;
+			margin: 25px auto;
+			text-align: center;
+			border-bottom: 5px solid $nice_red;
+			display: block;
+			width: 100%;
+		}
+	}
 }

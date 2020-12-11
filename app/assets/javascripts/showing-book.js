@@ -38,7 +38,7 @@ $( document ).on('turbolinks:load', function() {
             $('#make-booking').addClass('disabled');
             $('#make-booking').prop('disabled', true);
             
-            console.log("Booking:", id);
+            console.log("Seats Booked:", seats);
 
             let outcome = await bookSeats(id);
 
@@ -50,18 +50,12 @@ $( document ).on('turbolinks:load', function() {
               $('#alerts p').text( 'Booking successful!' );
               $('#alerts span').text( 'You will be redirected to your booking momentarily.' );
               $('#alerts').css( {'display': 'block'} );
-              
-              
-              
+    
               setTimeout(
                 function() 
                 {
                   window.location.href = `/bookings/${outcome}`; // redirect to booking confirmation page with details
                 }, 5000);
-
-              
-
-              
 
             } else {
               console.log("Unable to make booking");
@@ -185,13 +179,11 @@ function setupJqueryChart(seatLayout, unavailableSeats) {
             
             seats.push(
                  [this.settings.label,
-                 this.settings.row,
-                 this.settings.column]
+                 this.settings.row + 1,
+                 this.settings.column + 1]
             );
 
-            console.log("SENT: ", [this.settings.label,
-              this.settings.row,
-              this.settings.column]);
+            console.log(seats);
             
             //let's create a new <li> which we'll add to the cart items
             // $('<li>'+this.data().category+' Seat # '+this.settings.label+': <b>$'+this.data().price+'</b> <a href="#" class="cancel-cart-item">[cancel]</a></li>')
@@ -204,8 +196,15 @@ function setupJqueryChart(seatLayout, unavailableSeats) {
             
             return 'selected';
           } else if (this.status() == 'selected') {
-            seats.splice(seats.indexOf(this.settings.id), 1);
-            
+            // Remove seat
+            for (var z = 0; z < seats.length; z++) {
+              console.log("S: " +  seats[0][0] + " ID: " + this.settings.label);
+              if (seats[z][0] == parseInt(this.settings.label)) {
+                seats.splice(z, 1);
+                break;
+              }
+            }
+
             console.log(seats);
             
             // //update the counter

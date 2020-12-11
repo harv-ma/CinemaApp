@@ -53,11 +53,13 @@ class BookingsController < ApplicationController
     # Create seats for the booking
     seats.each do |seat|
       puts "Seat seat:"
-      puts seat
       puts seat.inspect
-      seat = seat[1]
+      seat = seat[1] # array is [0, [our seat array]] not sure why but \o-o/
       s = Seat.new(seatNumber: seat[0], booking: @booking, showing: Showing.find(id), row: seat[1], col: seat[2])
       if !s.save
+
+        
+
         raise "error"
       end
     end

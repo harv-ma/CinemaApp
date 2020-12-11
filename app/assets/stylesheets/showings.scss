@@ -7,6 +7,40 @@ $grey: #434343;
 $nice_red: #BA1B1D;
 $dark_red: #6B0F11;
 
+.showing-show {
+	.showing-img {
+		img {
+			width: 100%;
+		}
+	}
+
+	.showing-title {
+		h1 {
+			color: $nice_red;
+			margin: 25px auto;
+			text-align: center;
+			border-bottom: 5px solid $nice_red;
+			display: block;
+			width: 100%;
+		}
+
+		span {
+
+		}
+		
+	}
+
+	.book-button {
+		background-color: $nice_red;
+		color: white;
+		padding: 15px;
+		width: 300px;
+		border-radius: 8px;
+		margin: 50px auto;
+	}
+}
+
+
 .front-indicator {
     text-align: center;
     font-size: 24pt;
