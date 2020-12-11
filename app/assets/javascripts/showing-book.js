@@ -181,8 +181,17 @@ function setupJqueryChart(seatLayout, unavailableSeats) {
         click: function () {
           if (this.status() == 'available') {
             console.log("Adding ", this.settings);
-            seats.push(this.settings.id)
+            //seats.push(this.settings.id)
             
+            seats.push(
+                 [this.settings.label,
+                 this.settings.row,
+                 this.settings.column]
+            );
+
+            console.log("SENT: ", [this.settings.label,
+              this.settings.row,
+              this.settings.column]);
             
             //let's create a new <li> which we'll add to the cart items
             // $('<li>'+this.data().category+' Seat # '+this.settings.label+': <b>$'+this.data().price+'</b> <a href="#" class="cancel-cart-item">[cancel]</a></li>')

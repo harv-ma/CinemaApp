@@ -1,7 +1,9 @@
 class BookingsController < ApplicationController
+  require 'json'  
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
+    
 
   def success
   end
@@ -43,15 +45,18 @@ class BookingsController < ApplicationController
     
     id = params['id']
     seats = params['seats']
-
+    puts "Seat Param:"
+    puts seats
     # Create the booking
     @booking = Booking.new(showing: Showing.find(id), user: current_user)
 
     # Create seats for the booking
     seats.each do |seat|
-      seatVal = seat.split('_')
-      puts seatVal
-      s = Seat.new(booking: @booking, showing: Showing.find(id), row: seatVal[0], col: seatVal[1])
+      puts "Seat seat:"
+      puts seat
+      puts seat.inspect
+      seat = seat[1]
+      s = Seat.new(seatNumber: seat[0], booking: @booking, showing: Showing.find(id), row: seat[1], col: seat[2])
       if !s.save
         raise "error"
       end

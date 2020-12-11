@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 2020_12_04_153718) do
   end
 
   create_table "seats", force: :cascade do |t|
+    t.integer "seatNumber", null: false
     t.integer "booking_id", null: false
     t.integer "showing_id", null: false
     t.integer "row", null: false

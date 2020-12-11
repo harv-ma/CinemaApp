@@ -205,6 +205,7 @@ booking2 = Booking.create(
 
 # Seats Seeds
 seat = Seat.create(
+    seatNumber: 48,
     booking: booking1,
     showing: showing,
     row: 4,
@@ -212,6 +213,7 @@ seat = Seat.create(
 )
 
 seat2 = Seat.create(
+    seatNumber: 105,
     booking: booking2,
     showing: showing,
     row: 6,

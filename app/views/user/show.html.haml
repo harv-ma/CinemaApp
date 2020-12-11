@@ -25,7 +25,7 @@
                 %div{'class' => 'user-booking-seats'}
                     - seats = Seat.where(booking: booking)
                     - seats.each do |seat|
-                        %span= "#{seat.id},"
+                        %span= "#{seat.seatNumber},"
                 %div{'class' => 'user-booking-view'}
                     %p{'class' => 'user-view-button'}
                         = link_to 'View', booking_path(booking)
