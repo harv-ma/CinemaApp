@@ -2,11 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$rich_black: #070600;
+$grey: #434343;
+$nice_red: #BA1B1D;
+$dark_red: #6B0F11;
+
 .front-indicator {
     text-align: center;
     font-size: 24pt;
-    background-color: grey;
-    margin-bottom: 10px;
+    background-color: $grey;
+	margin-bottom: 10px;
+	color: $rich_black;
 }
 
 .booking-img {
@@ -15,12 +21,18 @@
 	}
 }
 
-
+#make-booking {
+	background-color: $nice_red;
+	color: white;
+	padding: 23px;
+	width: 100%;
+}
 
 div.seatCharts-container {
-	background-color: rgb(150, 150, 150);
+	background-color: $nice_red;
 	width: 100%;
 	margin: 25px auto;
+	border: 5px solid $nice_red;
 }
 div.seatCharts-cell {
 
@@ -32,7 +44,7 @@ div.seatCharts-cell {
 	outline: none;
 	font-size: 13px;
 	line-height:21px;
-    color: black;
+    color: white;
     
     @media only screen and (max-width: 1200px) {
 		// update box sizing
@@ -59,7 +71,7 @@ div.seatCharts-seat:focus {
 */
 
 div.seatCharts-space {
-	background-color: rgb(150, 150, 150);
+	background-color: $nice_red;
 }
 div.seatCharts-row {
 	height: 40px;
@@ -79,25 +91,37 @@ div.seatCharts-seat.focused {
 
 div.seatCharts-seat.available {
 	&.disabled-seat-class {
-		background-color: rgb(0, 0, 0);
+		background-color: $rich_black;
+		color: white;
 	}
 	&.standard-seat-class {
-		background-color: rgb(0, 4, 128);
+		background-color: rgb(214, 162, 162);
+	color: $rich_black;
 	}
 }
 
 div.seatCharts-seat.unavailable {
-	background-color: rgb(109, 109, 109);
+	background-color: $dark_red;
+	color: $rich_black;
 	cursor: not-allowed;
 }
 
 ul.seatCharts-legendList {
 	list-style: none;
 	float: right;
+	width: 200px;
 }
 li.seatCharts-legendItem {
 	margin-top: 10px;
 	line-height: 2;
+	
+	div {
+		border: 3px solid white;
+	}
+
+	span {
+		font-style: italic;
+	}
 }
 
 

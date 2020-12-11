@@ -41,7 +41,7 @@
             - if user_signed_in?
                 = render('rooms/seating-partial') # Include seat block
             - else
-                %div{'class' => 'mt-5 bg-warning p-4'}
+                %div{'class' => 'mt-5 login-partial'}
                     %h2= "You must have an account to make a booking!"
                     %p= "Login below, or sign-up to make a booking"
                     = render('shared/login-partial')

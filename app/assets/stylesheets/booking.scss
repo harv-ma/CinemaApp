@@ -2,6 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$rich_black: #070600;
+$grey: #434343;
+$nice_red: #BA1B1D;
+$dark_red: #6B0F11;
+
 
 .booking-success {
     height: 350px;
@@ -20,5 +25,57 @@
             font-size: 35pt;
             font-weight: 700;
         }
+    }
+}
+
+.header {
+    color: $nice_red;
+    margin: 25px auto;
+    text-align: center;
+    border-bottom: 5px solid $nice_red;
+    display: block;
+    width: 200px;
+}
+
+.booking-details {
+
+
+    .booking-img {
+        img {
+            width: 100%;
+        }
+    }
+
+    .booking-film-header {
+        color: $nice_red;
+        margin: 25px auto;
+        text-align: center;
+        border-bottom: 5px solid $nice_red;
+        display: block;
+        width: 200px;
+    }
+
+    .booking-showing-header h2 {
+        color: $nice_red;
+        margin: 25px auto;
+        text-align: center;
+        border-bottom: 5px solid $nice_red;
+        width: 100px;
+    }
+    
+}
+
+.booking-seats {
+    h1 {
+        font-size: 18pt;
+        color: $nice_red;
+        font-style: italic;
+    }
+    margin: 20px 0 100px 0;
+
+    .seat {
+        background-color: $nice_red;
+        border-radius: 8px;
+        padding: 5px;
     }
 }

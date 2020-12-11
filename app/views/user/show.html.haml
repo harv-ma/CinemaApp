@@ -10,6 +10,7 @@
             %div{'class' => 'user-booking-title'}Film Title
             %div{'class' => 'user-booking-room'}Room Number
             %div{'class' => 'user-booking-seats'}Seats Booked
+            %div{'class' => 'user-booking-view'}
   
         - @bookings.each do |booking|
             %div{'class' => 'col-12 d-flex user-booking'}
@@ -25,6 +26,9 @@
                     - seats = Seat.where(booking: booking)
                     - seats.each do |seat|
                         %span= "#{seat.id},"
+                %div{'class' => 'user-booking-view'}
+                    %p{'class' => 'user-view-button'}
+                        = link_to 'View', booking_path(booking)
 
 
     %div{'class' => 'row'}

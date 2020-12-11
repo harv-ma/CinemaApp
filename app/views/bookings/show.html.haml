@@ -1,43 +1,51 @@
 %p#notice= notice
-- @showing = @booking.showing
-- @film = @showing.film
-- @room = @showing.room
+
 
 
 %div{'class' => 'container'}
     %div{'class' => 'row booking-details'}
-        %div{'class' => 'col-3 booking-img'}
+        %div{'class' => 'col-4 booking-img'}
             //image
             - if @film.poster.attached?
                 %img{:src => "#{url_for(@film.poster)}"}
             - else
                 %p "No image available"
-        %div{'class' => 'col-6 booking-film'}
-            // film details
-            %div{'class' => 'booking-film-header'}
-                %h1= @film.title
-            %div{'class' => 'booking-film-content'}
-                %p
-                    %span= "Duration "
-                    = "#{@film.duration} hours"
-                %p
-                    %span= "Language "
-                    = @film.Language
-                %p
-                    %span= "Synopsis "
-                    = @film.synopsis
-        %div{'class' => 'col-3 booking-showing'}
-            // showing details
-            %div{'class' => 'booking-showing-header'}
-                %h2= "Details"
-                %span= "When "
-                %p{'class' => 'text-right'}
-                    = "#{@showing.startTime.strftime('%m/%d/%Y')} "
-                    %br
-                    = "#{@showing.startTime.strftime('%I:%M%p')}"
+        %div{'class' => 'col-8'}
+            %div{'class' => 'row'}
+                %div{'class' => 'col-8 booking-film'}
+                    // film details
+                    %div{'class' => 'booking-film-header'}
+                        %h1= @film.title
+                    %div{'class' => 'booking-film-content'}
+                        %p
+                            %span= "Duration: "
+                            = "#{@film.duration} hours"
+                        %p
+                            %span= "Language: "
+                            = @film.Language
+                        %p
+                            %span= "Synopsis "
+                            = @film.synopsis
+                %div{'class' => 'col-4 booking-showing'}
+                    // showing details
+                    %div{'class' => 'booking-showing-header'}
+                        %h2= "Details"
+                        %span= "When "
+                        %p{'class' => 'text-right'}
+                            = "#{@showing.startTime.strftime('%m/%d/%Y')} "
+                            %br
+                                = "#{@showing.startTime.strftime('%I:%M%p')}"
+            %div{'class' => 'row'}
+                %div{'class' => 'col-12 booking-seats'}
+                    %h1 Your seats
+                    - @seats.each do |seat|
+                        %span{'class' => 'seat'}= seat.id
+
+
+
 
 
 // could add custom seat chart to show the booked seats
 
 
-= link_to 'Back', bookings_path
+= link_to 'Back', '/users/show', class: 'back-button'

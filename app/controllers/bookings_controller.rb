@@ -23,6 +23,11 @@ class BookingsController < ApplicationController
     if @booking.user != current_user
       render_403
     end
+
+    @showing = @booking.showing
+    @film = @showing.film
+    @room = @showing.room
+    @seats = Seat.where(booking: @booking)
   end
 
   # GET /bookings/new
@@ -33,7 +38,9 @@ class BookingsController < ApplicationController
 
   # POST /showings/:id/book
   def create
-    # make sure bookings do not exist and seats are not taken
+    # TODO: make sure bookings do not exist and seats are not taken
+    
+    
     id = params['id']
     seats = params['seats']
 

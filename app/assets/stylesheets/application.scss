@@ -29,6 +29,7 @@ $dark_red: #6B0F11;
  html, body {
      font-family: 'Roboto', Arial, Helvetica, sans-serif;
      background-color: $rich_black;
+     color: white;
      
  }
 
@@ -82,4 +83,39 @@ $dark_red: #6B0F11;
 
 main {
      min-height: 90vh;
+}
+
+.back-button {
+   
+    background-color: $nice_red;
+    border-radius: 5px;
+    padding: 8px;
+    color: white;
+    text-decoration: none;
+    
+}
+
+/*
+*   Login form partial
+*/
+
+.login-partial{
+    background-color: $nice_red;
+    padding: 20px;
+    border-radius: 5px;
+
+    h2 {
+        font-size: 24pt;
+        font-weight: 600;
+    }
+}
+
+.login-form-partial {
+    .btn {
+        color: $rich_black;
+    }
+
+    .remember-me {
+        margin-top: 20px;
+    }
 }

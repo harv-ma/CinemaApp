@@ -35,7 +35,24 @@ $dark_red: #6B0F11;
         }
 
         .user-booking-seats {
-            width: 40%;
+            width: 30%;
+        }
+
+        .user-booking-view {
+            width: 10%;
+
+            p {
+                background-color: $nice_red;
+                border-radius: 5px;
+                padding: 8px;
+                text-align: center;
+                
+
+                a {
+                    color: white;
+                    
+                }
+            }
         }
     }
 }

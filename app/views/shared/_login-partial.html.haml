@@ -1,5 +1,5 @@
 = form_for(:user, :url => session_path(:user), html: {class: 'form-group' })do |f|
-    %div{'class' => 'container'}
+    %div{'class' => 'container login-form-partial'}
         %div{'class' => 'row'}
             %div{'class' => 'col-12'}
                 = f.label :email
@@ -7,7 +7,7 @@
             %div{'class' => 'col-12'}
                 = f.label :password
                 = f.password_field :password, class: 'form-control'
-            %div{'class' => 'col-12'}
+            %div{'class' => 'col-12 remember-me'}
                 = f.label :remember_me
                 = f.check_box :remember_me
         = f.submit 'Sign in', class: 'btn'
