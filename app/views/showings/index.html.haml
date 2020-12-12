@@ -1,50 +1,32 @@
-%h1 Current Showings
--# Current showings sorted by date with filters
-
-%div{'id' => 'slider'}
-  %a{ 'class' => 'control_next'}= ">"
-  %a{ 'class' => 'control_prev'}= "<"
-  %ul
-    - @films.each do |film|
-      %li
-        %a{'href' => "#{film_url(film)}"}
-          %span= film.title
+- if @films.count != 0
+  %h1 Current Showings
+  -# Films that are showing in the next week in a slider
+  %div{'id' => 'slider'}
+    %a{ 'class' => 'control_next'}= ">"
+    %a{ 'class' => 'control_prev'}= "<"
+    %ul
+      - @films.each do |film|
+        %li
+          %a{'href' => "#{film_url(film)}"}
+            %span= film.title
+            %img{:src => "#{url_for(film.poster)}"}
+  -# Films with their showings for the next week in rows
+  %hr{'class' => 'custom-hr'}
+  %div{'class' => 'container showing-week'}
+    %h2 Next week showings
+    - @films.each do |film| # For each film get next weeks showings for it
+      - @filmShowings = @showings.where(film: film) # putting them in a container with a scrollbbar
+      %div{'class' => 'showing-week-container d-flex'}
+        %div{'class' => 'showing-week-film'}
           %img{:src => "#{url_for(film.poster)}"}
-          
-      
-      -# = film.title
-      -# %img{:src => "#{url_for(film.poster)}"}
 
-%hr{'class' => 'custom-hr'}
-%div{'class' => 'd-flex'}
-  
-  
-// continue with this finish slider/carousel with jquery etc
-// then add the rest, so: films on left with showings for each to the right
-// in a row 
-
-
-
--# %table{'class' => 'table table-hover mt-3 table-custom-showings'}
--#   %thead{'class' => 'thead-dark'}
--#     %tr{'class' => 'd-flex'}
--#       %th{'class' => 'col-3'} ID
--#       %th{'class' => 'col-3'} Film
--#       %th{'class' => 'col-2'} Start Time
--#       %th{'class' => 'col-1'} Room
--#       %th{'class' => 'col-1'}
--#       %th{'class' => 'col-1'}
--#       %th{'class' => 'col-1'}
-
--#   %tbody
--#     - @showings.each do |showing|
--#       %tr{'class' => 'd-flex'}
--#         %th{'class' => 'col-3', 'scope' => 'row'}= showing.id
--#         %td{'class' => 'col-3'}= showing.film['title']
--#         %td{'class' => 'col-2'}= "#{showing.startTime.strftime('%m/%d/%Y')} #{showing.startTime.strftime('%I:%M%p')}"
--#         %td{'class' => 'col-1'}= showing.room['id']
--#         %td{'class' => 'col-1'}= link_to 'View', showing, class: 'btn btn-primary'
--#         %td{'class' => 'col-1'}= link_to 'Edit', edit_showing_path(showing), class: 'btn btn-primary'
--#         %td{'class' => 'col-1'}= link_to 'Cancel', showing, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary'
-
--# %br
+        %div{'class' => 'showing-week-showing-container'}   
+          - @filmShowings.each do |showing|
+            %div{'class' => 'showing-week-showing'}
+              %p= "Day: #{showing.startTime.strftime('%m/%d/%Y')}"
+              %p= "Hour: #{showing.startTime.strftime('%I:%M%p')}"
+              %br
+              %p{'class' => 'view-button'}
+                = link_to 'View', showing_path(showing)
+- else
+  %h1{'class' => 'sorry-message'} Sorry there are no showings this week

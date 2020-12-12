@@ -112,6 +112,16 @@ p.view-button {
     
 }
 
+.login-button {
+    background-color: $dark_red;
+    color: white;
+}
+
+.sign-up-button {
+    background-color: $dark_red;
+    color: white;
+}
+
 /*
 *   Login form partial
 */
@@ -146,4 +156,30 @@ p.view-button {
 .custom-hr {
     border-top: 3px solid $dark_red;
     width: 80%;
+}
+
+/* width */
+::-webkit-scrollbar {
+width: 14px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+background: rgb(36, 36, 36);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+background: #b30000; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+background: #880101; 
+}
+
+.sorry-message {
+    color: $nice_red;
+    text-align: center;
+    margin-top: 500px;
 }

@@ -12,7 +12,7 @@ class ShowingsController < ApplicationController
   def index
 
     # get all showings for next 7 days
-    @showings = Showing.where(startTime: (Time.now.midnight)..(Time.now.midnight + 10.day))
+    @showings = Showing.where(startTime: (Time.now.midnight)..(Time.now.midnight + 7.day))
     
     @films = @showings.map{ |s| s.film} # get only the film objects
     @films = @films.uniq { |f| f.title } # remove duplicates

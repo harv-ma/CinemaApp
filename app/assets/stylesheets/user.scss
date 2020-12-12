@@ -95,3 +95,125 @@ $dark_red: #6B0F11;
 
 
 
+/*
+*   Login / Sign Up Pages
+*/
+
+.login-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+
+    h2 {
+        color: $nice_red;
+        margin: 25px auto;
+        padding-bottom: 10px;
+        text-align: center;
+        border-bottom: 5px solid $nice_red;
+        display: block;
+        width: 200px;
+    }
+
+    label {
+        color: $nice_red;
+    }
+
+    .email {
+        label {
+            font-style: italic;
+        }
+
+        input {
+            padding: 5px;
+            background-color: $dark_red;
+            color: white;
+            border: 0;
+        }
+    }
+
+    .password {
+        margin: 10px 0;
+        label {
+            font-style: italic;
+        }
+
+        input {
+            padding: 5px;
+            background-color: $dark_red;
+            color: white;
+            border: 0;
+        }
+    }
+
+    .login {
+        input {
+            background-color: $nice_red;
+            color: white;
+            border: 0;
+            padding: 5px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+    }
+
+    
+}
+
+.input-field {
+    
+    background-color: $nice_red;
+    color: white;
+    border: 0;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 10px 0;
+    
+}
+
+.sign-up-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+
+    h2 {
+        color: $nice_red;
+        margin: 25px auto;
+        padding-bottom: 10px;
+        text-align: center;
+        border-bottom: 5px solid $nice_red;
+        display: block;
+        width: 200px;
+    }
+
+    input {
+        max-width: 100%;
+        width: 400px;
+    }
+    
+    label {
+        font-style: italic;
+        color: $nice_red;
+    }
+    
+    .sign-up {
+        input {
+            background-color: $nice_red;
+            color: white;
+            border: 0;
+            padding: 5px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+    }
+    
+}
+
+.links {
+    a {
+        color: $nice_red;
+        font-style: italic;
+        font-size: 12pt;
+    }
+}
