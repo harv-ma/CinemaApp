@@ -1,7 +1,7 @@
 class ShowingsController < ApplicationController
   before_action :set_showing, only: [:show, :edit, :update, :destroy, :book]
-
-  
+  before_action :authenticate_user!, only: [:book]
+  before_action :validateAdmin, only: [:edit, :update, :destroy, :create, :indexAdmin]
 
   # Booking page showings/:id/book
   def book

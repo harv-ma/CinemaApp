@@ -1,5 +1,5 @@
 - if @films.count != 0
-  %h1 Current Showings
+  %h1{'class' => 'page-header'} Current Showings
   -# Films that are showing in the next week in a slider
   %div{'id' => 'slider'}
     %a{ 'class' => 'control_next'}= ">"

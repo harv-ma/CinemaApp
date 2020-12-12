@@ -37,10 +37,12 @@ class ApplicationController < ActionController::Base
         if !user_signed_in?
             redirect_to "/users/sign_in"
         else
-            respond_to do |format|
-                format.html { render file: "#{Rails.root}/public/403", layout: false, status: :not_found }
-                format.xml  { head :not_found }
-                format.any  { head :not_found }
+            if !current_user.admin
+                respond_to do |format|
+                    format.html { render file: "#{Rails.root}/public/403", layout: false, status: :not_found }
+                    format.xml  { head :not_found }
+                    format.any  { head :not_found }
+                end
             end
         end
 

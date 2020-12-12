@@ -287,3 +287,64 @@ li.seatCharts-legendItem {
 		}
 	}
 }
+
+/*
+*	Showing Form
+*/
+
+.showing-form {
+	width: 1000px;
+	max-width: 100%;
+
+	div {
+		margin: 20px 0;
+	}
+
+
+	.start-date {
+		label {
+			color: $nice_red;
+			font-style: italic;
+		}
+
+		select {
+			border: 0;
+			padding: 5px;
+		}
+	}
+
+	.film {
+		label {
+			color: $nice_red;
+			font-style: italic;
+		}
+
+		select {
+			border: 0;
+			padding: 5px;
+		}
+	}
+
+	.room {
+		label {
+			color: $nice_red;
+			font-style: italic;
+		}
+
+		select {
+			border: 0;
+			padding: 5px;
+		}
+	}
+}
+
+
+
+.page-header {
+	color: $nice_red;
+    margin: 25px auto;
+    text-align: center;
+    border-bottom: 5px solid $nice_red;
+    display: block;
+    width: 200px;
+}

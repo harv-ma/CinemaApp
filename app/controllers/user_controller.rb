@@ -5,7 +5,4 @@ class UserController < ApplicationController
     def show
         @bookings = Booking.where(user: current_user).order('created_at DESC')
     end
-
-
-
 end

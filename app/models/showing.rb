@@ -1,15 +1,3 @@
-class ShowingValidator < ActiveModel::Validator
-  def validate(showing)
-    s = Showing.where(room: showing.room)
-    showings = s.where('(startTime BETWEEN ? AND ?) OR (finishTIme BETWEEN ? AND ?)', showing.startTime, showing.finishTime, showing.startTime, showing.finishTime)
-    puts "SHOWING TEST:"
-    puts showings
-    unless showings.count != 0
-      showing.errors.add attribute, (options[:message] || "is not an email")
-    end
-  end
-end
-
 class Showing < ApplicationRecord
   # ID, startTime, finishTime, FK room, FK film  
 
@@ -36,7 +24,7 @@ class Showing < ApplicationRecord
   # overlaps with any showing scheduled in the same room
   def validate_time
     s = Showing.where(room: room)
-    showings = s.where('(startTime BETWEEN ? AND ?) OR (finishTIme BETWEEN ? AND ?)', startTime, finishTime, startTime, finishTime)
+    showings = s.where('(startTime BETWEEN ? AND ?) OR (finishTime BETWEEN ? AND ?)', startTime, finishTime, startTime, finishTime)
     unless showings.count == 0
       errors.add(:base, "This conflicts with another showing!")
     end

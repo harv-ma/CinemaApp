@@ -34,6 +34,8 @@ en:
   app_description: A place to book a film screening.
   company: Harvey ltd
 
+  error_explanation: Sorry the form could not submitted please fix and try again
+
   home:
     home:
       title: Cinema Books

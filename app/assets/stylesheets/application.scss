@@ -112,6 +112,15 @@ p.view-button {
     
 }
 
+input.save-button {
+    background-color: $nice_red;
+    border-radius: 5px;
+    padding: 8px;
+    color: white;
+    text-decoration: none;
+    margin: 20px 20px;
+}
+
 .login-button {
     background-color: $dark_red;
     color: white;
@@ -183,3 +192,4 @@ background: #880101;
     text-align: center;
     margin-top: 500px;
 }
+

@@ -1,21 +1,23 @@
-= form_for @showing do |f|
+= form_for @showing, html: {'class' => 'showing-form'} do |f|
   - if @showing.errors.any?
-    #error_explanation
-      %div{'class' => 'alert alert-danger'}
-        = "#{pluralize(@showing.errors.count, "error")} prohibited this showing from being saved:"
-        %ul
-          - @showing.errors.full_messages.each do |message|
-            %li= message
-  %div{'class' => 'form-group'}
-    .field
-      = f.label :startTime
-      = f.datetime_select(:startTime, {},{:class => 'form-control'} )
-    .field
-      = f.label :film
-      = f.collection_select(:film_id, Film.all, :id, :title, {},{:class => 'form-control'})
-    .field
-      = f.label :room
-      = f.collection_select(:room_id, Room.all, :id, :id, {},{:class => 'form-control'})
-    .actions
-      = f.submit 'Save', class: 'btn btn-primary float-right'
-      = link_to 'Back', showings_path, class: 'btn btn-primary'
+    %div{'class' => 'alert alert-danger'}
+      %h5{'class' => 'error-alert'}= t('error_explanation')
+      %ul
+        - @showing.errors.full_messages.each do |message|
+          %li= message
+
+  .field{'class' => 'start-date'}
+    = f.label "Start Date and Time"
+    %br
+    = f.datetime_select(:startTime, {start_year: Time.current.year, order: [:day, :month, :year]} )
+  .field{'class' => 'film'}
+    = f.label :film
+    %br
+    = f.collection_select(:film_id, Film.all, :id, :title, {})
+  .field{'class' => 'room'}
+    = f.label :room
+    %br
+    = f.collection_select(:room_id, Room.all, :id, :id, {})
+  .actions{'class' => 'buttons'}
+    = f.submit 'Save', class: 'btn save-button'
+    = link_to 'Back', showings_path, class: 'btn back-button'
