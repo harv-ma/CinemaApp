@@ -4,7 +4,7 @@
         = "Showing: "
         %span{'class' => 'bold'}= "#{@showing.film.title}"
         =  " at "
-        %span{'class' => 'bold'}= @showing.startTime.strftime('%m/%d/%Y')
+        %span{'class' => 'bold'}= @showing.startTime.strftime('%d/%m/%Y')
         = " "
         %span{'class' => 'bold'}=  @showing.startTime.strftime('%I:%M%p')
 

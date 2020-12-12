@@ -29,7 +29,7 @@
         %div{'class' => 'showing-week-showing-container'}   
           - @filmShowings.each do |showing|
             %div{'class' => 'showing-week-showing'}
-              %p= "Day: #{showing.startTime.strftime('%m/%d/%Y')}"
+              %p= "Day: #{showing.startTime.strftime('%d/%m/%Y')}"
               %p= "Hour: #{showing.startTime.strftime('%I:%M%p')}"
               %br
               %p{'class' => 'view-button'}

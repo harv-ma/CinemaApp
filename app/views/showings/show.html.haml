@@ -10,7 +10,7 @@
       %div{'class' => 'mt-2 showing-details'}
         %h4
           %span= "Start Time: "
-          = @showing.startTime.strftime('%m/%d/%Y')
+          = @showing.startTime.strftime('%d/%m/%Y')
           = " at "
           =  @showing.startTime.strftime('%I:%M%p')
         %h4
