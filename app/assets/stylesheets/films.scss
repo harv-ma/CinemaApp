@@ -33,3 +33,60 @@ $dark_red: #6B0F11;
 		}
 	}
 }
+
+
+/*
+*	Index
+*/
+
+.future-films {
+	height: 100%;
+	width: 100%;
+	margin: 30px auto;
+	
+
+	.film-item {
+		height: 200px;
+		margin: 10px 20px;
+		display: inline-block;
+		transition: all 200ms ease-in;
+		
+		img {
+			height: 100%;
+		}
+
+		&:hover {
+			transform: scale(1.2);
+		}
+	}
+
+	.film-container {
+		width: 100%;
+		
+	}
+}
+
+.film-header {
+    color: $nice_red;
+    margin: 25px auto;
+    text-align: center;
+    border-bottom: 5px solid $nice_red;
+    display: block;
+    width: 200px;
+}
+
+.film-page-title {
+	h1 {
+		color: $nice_red;
+		margin: 50px auto;
+		padding-bottom: 20px;
+		text-align: center;
+		border-bottom: 5px solid $nice_red;
+		display: block;
+		width: 500px;
+	}
+
+	p {
+
+	}
+}

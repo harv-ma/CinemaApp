@@ -5,10 +5,6 @@ class BookingsController < ApplicationController
 
     
 
-  def success
-  end
-
-
   # GET /bookings
   # GET /bookings.json
   def index
@@ -58,8 +54,6 @@ class BookingsController < ApplicationController
       s = Seat.new(seatNumber: seat[0], booking: @booking, showing: Showing.find(id), row: seat[1], col: seat[2])
       if !s.save
 
-        
-
         raise "error"
       end
     end
@@ -85,7 +79,7 @@ class BookingsController < ApplicationController
   def destroy
     @booking.destroy
     respond_to do |format|
-      format.html { redirect_to bookings_url, notice: 'Booking was successfully destroyed.' }
+      format.html { redirect_to '/users/show', notice: 'Booking was successfully cancelled.' }
       format.json { head :no_content }
     end
   end

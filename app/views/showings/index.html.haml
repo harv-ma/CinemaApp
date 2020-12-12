@@ -9,7 +9,10 @@
         %li
           %a{'href' => "#{film_url(film)}"}
             %span= film.title
-            %img{:src => "#{url_for(film.poster)}"}
+            - if film.poster.attached?
+              %img{:src => "#{url_for(film.poster)}"}
+            - else
+              %p "No image available"
   -# Films with their showings for the next week in rows
   %hr{'class' => 'custom-hr'}
   %div{'class' => 'container showing-week'}
@@ -18,7 +21,10 @@
       - @filmShowings = @showings.where(film: film) # putting them in a container with a scrollbbar
       %div{'class' => 'showing-week-container d-flex'}
         %div{'class' => 'showing-week-film'}
-          %img{:src => "#{url_for(film.poster)}"}
+          - if film.poster.attached?
+            %img{:src => "#{url_for(film.poster)}"}
+          - else
+            %p "No image available"
 
         %div{'class' => 'showing-week-showing-container'}   
           - @filmShowings.each do |showing|

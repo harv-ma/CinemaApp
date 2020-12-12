@@ -2,11 +2,20 @@ class FilmsController < ApplicationController
   before_action :set_film, only: [:show, :edit, :update, :destroy]
 
   
+  def indexAdmin
+    @films = Film.all
+  end
+
 
   # GET /films
   # GET /films.json
   def index
-    @films = Film.all
+    
+    showings = Showing.where("startTime > ?", Time.now)
+
+    @futureFilms = showings.map{ |s| s.film}
+    @futureFilms = @futureFilms.uniq { |f| f.title }
+    @allFilms = Film.all
   end
 
   # GET /films/1
