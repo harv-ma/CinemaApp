@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_04_153718) do
+ActiveRecord::Schema.define(version: 2020_12_13_200610) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2020_12_04_153718) do
     t.datetime "updated_at", null: false
     t.index ["showing_id"], name: "index_bookings_on_showing_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
+    t.index [nil], name: "index_bookings_on_user"
   end
 
   create_table "films", force: :cascade do |t|
@@ -79,7 +80,9 @@ ActiveRecord::Schema.define(version: 2020_12_04_153718) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["film_id"], name: "index_showings_on_film_id"
+    t.index ["id"], name: "index_showings_on_id", unique: true
     t.index ["room_id"], name: "index_showings_on_room_id"
+    t.index [nil], name: "index_showings_on_film"
   end
 
   create_table "users", force: :cascade do |t|
