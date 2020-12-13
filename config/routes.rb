@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/films/admin', to: 'films#indexAdmin'
   get '/users/show', to: 'user#show'
   
+  # Resource Routes
   resources :films
   resources :showings
   resources :bookings, :only => [:index, :show, :create, :destroy]
@@ -32,9 +33,5 @@ Rails.application.routes.draw do
 
   # root
   root 'home#home'
-
-  #if Rails.env.production?
-  #get '404', :to => 'application#render_404'
-  #end
 
 end

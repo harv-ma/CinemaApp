@@ -77,11 +77,24 @@ $dark_red: #6B0F11;
 .main-footer {
      background-color: $nice_red;
      padding: 10px;
+     width: 100%;
+     position: relative;
+     
+     a {
+         color: white;
+     }
 
      span {
+        font-style: italic;
+        color: $rich_black;
+    }
+
+     p {
         text-align: center;
         width: 100%;
      }
+
+     
 }
 
 main {
@@ -144,6 +157,7 @@ input.save-button {
     background-color: $nice_red;
     padding: 20px;
     border-radius: 5px;
+    margin: 20px;
 
     h2 {
         font-size: 24pt;

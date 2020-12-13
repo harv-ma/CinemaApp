@@ -2,6 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$rich_black: #070600;
+$grey: #434343;
+$nice_red: #BA1B1D;
+$dark_red: #6B0F11;
+
 .week-films-container {
     overflow: auto;
     white-space: nowrap;
@@ -34,4 +39,44 @@
             text-decoration: none;
         }
     }
+}
+
+.banner-container {
+   height: 100vh;
+   width: 100%;
+   
+
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+
+
+   .overlay {
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 100%;
+        width: 100%;
+        position: relative;
+        .banner-text {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            
+            h1 {
+                font-size: 60pt;
+                color: $nice_red;
+                border-bottom: 5px solid $nice_red;
+                width: 100%;
+                font-weight: 600;
+            }
+
+            p {
+                color: $dark_red;
+                font-size: 17pt;
+                font-style: italic;
+            }
+        }
+
+   }
+   
 }

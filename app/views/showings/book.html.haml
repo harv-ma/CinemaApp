@@ -42,6 +42,6 @@
                 = render('rooms/seating-partial') # Include seat block
             - else
                 %div{'class' => 'mt-5 login-partial'}
-                    %h2= "You must have an account to make a booking!"
-                    %p= "Login below, or sign-up to make a booking"
+                    %h2= t('login_partial_title')
+                    %p= t('login_partial_detail')
                     = render('shared/login-partial')

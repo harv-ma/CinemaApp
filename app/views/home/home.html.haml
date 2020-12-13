@@ -1,5 +1,8 @@
 
-%div{'class' => 'container-fluid'}
-  %div{'class' => 'content-header'}
-    %h1= t('.title')
-    %p= t('.sub_title')
+%div{'class' => 'banner-container', 'style' => "background-image: url('#{image_url('seats.jpg')}')"}
+  %div{'class' => 'overlay'}
+    %div{'class' => 'banner-text'}
+      %h1= t('app_title')
+      %p= t('app_description')
+
+  

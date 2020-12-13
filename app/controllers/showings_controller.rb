@@ -1,6 +1,5 @@
 class ShowingsController < ApplicationController
   before_action :set_showing, only: [:show, :edit, :update, :destroy, :book]
-  before_action :authenticate_user!, only: [:book]
   before_action :validateAdmin, only: [:edit, :update, :destroy, :create, :indexAdmin, :new]
 
   # Booking page showings/:id/book
@@ -41,7 +40,6 @@ class ShowingsController < ApplicationController
   # POST /showings.json
   def create
     @showing = Showing.new(showing_params)
-    puts @showing.film
     @showing.finishTime = @showing.startTime + @showing.film.duration.hours
 
     respond_to do |format|

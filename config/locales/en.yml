@@ -35,6 +35,9 @@ en:
   company: Harvey ltd
 
   error_explanation: Sorry the form could not submitted please fix and try again
+  login_partial_title: You must have an account to make a booking!
+  login_partial_detail: Login below, or sign-up to make a booking
+
 
   home:
     home:
@@ -55,3 +58,4 @@ en:
     request_contact:
       no_email: You must supply an email address
       email_sent: Thank you. We will be in touch shortly.
+    

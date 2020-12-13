@@ -1,11 +1,25 @@
 %footer
   %div{'class' => 'main-footer'}
-    = link_to 'Showings', showings_path
-    %br
-    = link_to 'Films', films_path
-    %br
-    = link_to 'My Bookings', '/users/show'
-    %br
-    = link_to 'Edit Profile', '/users/edit'
-    %br
-    %span!= "&copy; " + t('company') + " #{Time.now.year}. All rights reserved"
+    %div{'class' => 'container row col-12'}
+      %div{'class' => 'col-2'}
+      %div{'class' => 'col-4'}
+        %span General Links
+        %br
+        = link_to 'Showings', showings_path
+        %br
+        = link_to 'Films', films_path
+        %br
+        = link_to 'My Bookings', '/users/show'
+        %br
+        = link_to 'Edit Profile', '/users/edit'
+      %div{'class' => 'col-2'}
+      %div{'class' => 'col-4'}
+        %span Admin Links
+        %br
+        = link_to 'Showings', showings_path + "/admin"
+        %br
+        = link_to 'Films', films_path + "/admin"
+        %br
+        = link_to 'All Bookings', bookings_path
+        
+    %p!= "&copy; " + t('company') + " #{Time.now.year}. All rights reserved"
