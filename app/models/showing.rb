@@ -6,15 +6,16 @@ class Showing < ApplicationRecord
   validates :room, presence: true
   validates :film, presence: true
   validate :validate_time # our custom validator
+
+  # Scopes
+  scope :inTheNextWeek, -> {where(startTime: (Time.now.midnight)..(Time.now.midnight + 7.day))}
   
   # might delete these
   def self.getCurrentShowings
     return currentShowings = Showings.all
   end
 
-  def self.getNextWeekFilms
-    return Showing.where('startTime > ?', Date.today)
-  end
+  
 
   # Associations
   belongs_to :film
@@ -24,7 +25,9 @@ class Showing < ApplicationRecord
   # overlaps with any showing scheduled in the same room
   def validate_time
     s = Showing.where(room: room)
-    showings = s.where('(startTime BETWEEN ? AND ?) OR (finishTime BETWEEN ? AND ?)', startTime, finishTime, startTime, finishTime)
+    # Check if this showing overlaps another
+    showings = s.where('startTime <= ? AND finishTime >= ?', finishTime, startTime)
+    # if none are returned there are no overlaps
     unless showings.count == 0
       errors.add(:base, "This conflicts with another showing!")
     end

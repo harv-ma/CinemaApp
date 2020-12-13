@@ -75,8 +75,13 @@ $dark_red: #6B0F11;
 }
 
 .main-footer {
-     height: 60px;
-     text-align: center;
+     background-color: $nice_red;
+     padding: 10px;
+
+     span {
+        text-align: center;
+        width: 100%;
+     }
 }
 
 main {

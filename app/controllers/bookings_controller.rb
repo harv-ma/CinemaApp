@@ -25,19 +25,20 @@ class BookingsController < ApplicationController
   def create
     id = params['id']
     seats = params['seats']
-
+    showing = Showing.find(id)
+    
     # Create the booking
-    @booking = Booking.new(showing: Showing.find(id), user: current_user)
+    @booking = Booking.new(showing: showing, user: current_user)
 
     # Create seats for the booking
     seats.each do |seat|
       seat = seat[1] # array is [0, [our seat array]] not sure why but \o-o/
       # check before creating the seat
-      if Seat.exists?(seatNumber: seat[0], showing: Showing.find(id))
+      if Seat.exists?(seatNumber: seat[0], showing: showing)
         raise "error"
       end
 
-      s = Seat.new(seatNumber: seat[0], booking: @booking, showing: Showing.find(id), row: seat[1], col: seat[2])
+      s = Seat.new(seatNumber: seat[0], booking: @booking, showing: showing, row: seat[1], col: seat[2])
       # the above line above saves the booking; as an association must be made
       if !s.save
         # if the seats are already taken we cancel the booking

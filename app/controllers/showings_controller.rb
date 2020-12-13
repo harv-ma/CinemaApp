@@ -1,7 +1,7 @@
 class ShowingsController < ApplicationController
   before_action :set_showing, only: [:show, :edit, :update, :destroy, :book]
   before_action :authenticate_user!, only: [:book]
-  before_action :validateAdmin, only: [:edit, :update, :destroy, :create, :indexAdmin]
+  before_action :validateAdmin, only: [:edit, :update, :destroy, :create, :indexAdmin, :new]
 
   # Booking page showings/:id/book
   def book
@@ -12,7 +12,7 @@ class ShowingsController < ApplicationController
   def index
 
     # get all showings for next 7 days
-    @showings = Showing.where(startTime: (Time.now.midnight)..(Time.now.midnight + 7.day))
+    @showings = Showing.inTheNextWeek
     
     @films = @showings.map{ |s| s.film} # get only the film objects
     @films = @films.uniq { |f| f.title } # remove duplicates
