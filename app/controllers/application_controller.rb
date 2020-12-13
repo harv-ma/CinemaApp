@@ -26,23 +26,19 @@ class ApplicationController < ActionController::Base
 
     def render_403
         respond_to do |format|
-            format.html { render file: "#{Rails.root}/public/403", layout: false, status: :not_found }
-            format.xml  { head :not_found }
-            format.any  { head :not_found }
+            format.html { render file: "#{Rails.root}/public/403", layout: false, status: :unauthorized }
+            format.xml  { head :unauthorized }
+            format.any  { head :unauthorized }
         end
     end
 
     def validateAdmin
         
         if !user_signed_in?
-            redirect_to "/users/sign_in"
+            render_403
         else
             if !current_user.admin
-                respond_to do |format|
-                    format.html { render file: "#{Rails.root}/public/403", layout: false, status: :not_found }
-                    format.xml  { head :not_found }
-                    format.any  { head :not_found }
-                end
+                render_403
             end
         end
 

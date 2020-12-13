@@ -1,13 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  booking: 
+seat_one:
+  seatNumber: 1
+  booking: booking_one
+  showing: showing_one
   row: 1
   col: 1
-  disablity_access: false
 
-two:
-  booking: 
-  row: 1
-  col: 1
-  disablity_access: false
+seat_two:
+  seatNumber: 33
+  booking: booking_two
+  showing: showing_one
+  row: 3
+  col: 3

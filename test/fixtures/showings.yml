@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  startTime: 2020-11-20
-  film: one
-  room: one
+showing_one:
+  startTime: 2020-12-22 01:00:00
+  finishTime: 2020-12-22 02:30:00
+  film: film_one
+  room: room_one
 
-two:
-  startTime: 2020-11-20
-  film: two
-  room: two
+showing_two:
+  startTime: 2020-12-20 01:00:00
+  finishTime: 2020-12-20 03:00:00
+  film: film_two
+  room: room_two

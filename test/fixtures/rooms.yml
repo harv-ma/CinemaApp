@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  id: 1
+room_one:
   numberOfSeats: 120
+  format: A
   WheelChair_Access: true
 
-two:
-  id: 2
+room_two:
   numberOfSeats: 80
+  format: B
   WheelChair_Access: false

@@ -35,7 +35,7 @@ class BookingsController < ApplicationController
       seat = seat[1] # array is [0, [our seat array]] not sure why but \o-o/
       # check before creating the seat
       if Seat.exists?(seatNumber: seat[0], showing: showing)
-        raise "error"
+        raise "Seat already exists"
       end
 
       s = Seat.new(seatNumber: seat[0], booking: @booking, showing: showing, row: seat[1], col: seat[2])
@@ -44,7 +44,7 @@ class BookingsController < ApplicationController
         # if the seats are already taken we cancel the booking
         # dependencies ensure the previous seats are also destroyed with it
         @booking.destroy
-        raise "error"
+        raise "Unable to save seat"
       end
     end
 
@@ -54,10 +54,8 @@ class BookingsController < ApplicationController
 
     respond_to do |format|
       if @booking.save
-        format.html { redirect_to @booking, notice: 'Booking was successfully created.' }
         format.json { render json: data, status: :created, location: @booking }
       else
-        format.html { render :new }
         format.json { render json: @booking.errors, status: :unprocessable_entity }
       end
     end

@@ -1,17 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+film_one:
   title: Weathering With You
   synopsis: A boy runs away to Tokyo and befriends a girl who appears to be able to manipulate the weather.
   rating: 10
   duration: 1.5
-  Language: Japanese
-  Release_date: 2020-11-06
+  language: Japanese
+  release_date: 2020-05-06
 
-two:
+film_two:
   title: Promare
   synopsis: Thirty years has passed since the appearance of Burnish, a race of flame-wielding mutant beings, who destroyed half of the world with fire. When a new group of aggressive mutants appears, a battle begins.
   rating: 8.5
   duration: 2
-  Language: Japanese
-  Release_date: 2020-11-06
+  language: Japanese
+  release_date: 2020-11-06

@@ -41,6 +41,7 @@ class ShowingsController < ApplicationController
   # POST /showings.json
   def create
     @showing = Showing.new(showing_params)
+    puts @showing.film
     @showing.finishTime = @showing.startTime + @showing.film.duration.hours
 
     respond_to do |format|
@@ -86,6 +87,6 @@ class ShowingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def showing_params
-      params.require(:showing).permit(:startTime, :duration, :film_id, :room_id)
+      params.require(:showing).permit(:startTime, :film_id, :room_id)
     end
 end

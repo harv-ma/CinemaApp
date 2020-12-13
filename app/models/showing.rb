@@ -26,7 +26,7 @@ class Showing < ApplicationRecord
   def validate_time
     s = Showing.where(room: room)
     # Check if this showing overlaps another
-    showings = s.where('startTime <= ? AND finishTime >= ?', finishTime, startTime)
+    showings = s.where('id <> ? AND startTime <= ? AND finishTime >= ?', id, finishTime, startTime)
     # if none are returned there are no overlaps
     unless showings.count == 0
       errors.add(:base, "This conflicts with another showing!")

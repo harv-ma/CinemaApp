@@ -170,8 +170,8 @@ admin.forename = 'Harvey'
 admin.surname = 'M-A'
 admin.phonenumber = '077777777'
 admin.email = 'hm00929@surrey.ac.uk'
-admin.password = 'password'
-admin.password_confirmation = 'password'
+admin.password = 'password' # this would never be done in real world
+admin.password_confirmation = 'password' # this would never be done in real world
 admin.admin = true
 admin.save!
 
