@@ -34,8 +34,16 @@ Now it should be up and running at localhost:3000.
 #### Admin
 Admins have the abililty to manage the creation, deletion and editing of each Film, Showing, Room and User details. Bookings cannot be edited, only created and destroyed.
 You can find each management page at ~/admin, where ~ is the model (i.e. showings, bookings, films).
+
+*Creds:* admin@example.com
+	 password
+
 #### User
 A user can edit their profile, view showings and film pages, make bookings for showings and use the contact form. They can also view their user page to see all the bookings they have made. They are not allowed to access any management pages
+
+*Creds:* user@example.com
+	 password
+
 #### Guest
 Guests can view showings, films and booking pages, but are not able to make bookings; you must be signed in to do this.
 ### Tests
