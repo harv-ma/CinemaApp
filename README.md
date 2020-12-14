@@ -4,7 +4,7 @@
 
 
 ### Description
-Cinema books is a website specifically for making and management film showings. Admins can manage them. Users can browse films and showings, then book and view their bookings on their user page.
+Cinema books is a website specifically for making and managing film showings. Admins can manage them. Users can browse films and showings, then book and view their bookings on their user page.
 
 ------------
 ### Versions
