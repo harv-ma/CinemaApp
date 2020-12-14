@@ -3,11 +3,11 @@
 
 
 
-#### Description
-Cinema books is a website specifically for making and management film showings. Admins can manage them. Users can browse films and showings, then book and view their bookings on their user page.
+### Description
+Cinema books is a website specifically for making and managing film showings. Admins can manage them. Users can browse films and showings, then book and view their bookings on their user page.
 
 ------------
-#### Versions
+### Versions
 - Rails: 5.2.4.4
 - Ruby: 2.7.1p83
 	- Additional Gems:
@@ -21,7 +21,7 @@ Cinema books is a website specifically for making and management film showings. 
 - [Jquery Seat Charts (MIT License)](https://www.jqueryscript.net/chart-graph/Full-featured-Seating-Chart-Plugin-With-jQuery-Seat-Charts.html "Jquery Seat Charts")
 
 ------------
-#### Setup
+### Setup
 1. Download code or clone this repository
 2. Run **bundle install**
 3. Run **rails db:migrate**
@@ -30,18 +30,19 @@ Cinema books is a website specifically for making and management film showings. 
 Now it should be up and running at localhost:3000.
 
 ------------
-#### Guide
-TODO:!!
-TODO:!!
-###### Admin
-TODO:!!
-TODO:!!
-###### User
-TODO:!!
-TODO:!!
-#### Tests
-TODO:!!TODO:!!
-TODO:!!
+#### Admin
+Admins have the abililty to manage the creation, deletion and editing of each Film, Showing, Room and User details. Bookings cannot be edited, only created and destroyed.
+You can find each management page at ~/admin, where ~ is the model (i.e. showings, bookings, films).
+#### User
+A user can edit their profile, view showings and film pages, make bookings for showings and use the contact form. They can also view their user page to see all the bookings they have made. They are not allowed to access any management pages
+#### Guest
+Guests can view showings, films and booking pages, but are not able to make bookings; you must be signed in to do this.
+### Tests
+Each model, mailer and controller has their own tests. All tests are run using the command below. 
+```
+rake test
+```
+
 #### Models
 - User
 - Showing
@@ -49,4 +50,3 @@ TODO:!!
 - Room
 - Booking
 - Seat
-
