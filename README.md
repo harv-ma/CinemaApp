@@ -23,7 +23,7 @@ Cinema books is a website specifically for making and managing film showings. Ad
 ------------
 ### Setup
 
-Once you download or clone the repository, everything should be good to go. Dumby data is already added. If you want to wipe the data, run `rake rb:reset` then `rake db:seed`.
+Once you download or clone the repository, everything should be good to go. Dumby data is already added. If you want to wipe the data, run `rake db:drop db:create db:migrate` then `rake db:seed`.
 
 Now it should be up and running at localhost:3000.
 
