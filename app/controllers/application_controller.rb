@@ -33,10 +33,11 @@ class ApplicationController < ActionController::Base
     end
 
     def validateAdmin
-        
+        # Is the user logged in?
         if !user_signed_in?
             render_403
         else
+            # Does the user have the admin role?
             if !current_user.admin
                 render_403
             end
@@ -54,6 +55,7 @@ class ApplicationController < ActionController::Base
             request.get? && is_navigational_format? && !devise_controller? && !request.xhr? 
         end
         
+        # Used to remember last page (so we can redirect to it with a back button)
         def store_user_location!
             # :user is the scope we are authenticating
             store_location_for(:user, request.fullpath)

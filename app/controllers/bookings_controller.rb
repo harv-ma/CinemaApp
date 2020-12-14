@@ -23,6 +23,7 @@ class BookingsController < ApplicationController
 
   # POST /showings/:id/book
   def create
+    # Grab data from params
     id = params['id']
     seats = params['seats']
     showing = Showing.find(id)
@@ -38,8 +39,9 @@ class BookingsController < ApplicationController
         raise "Seat already exists"
       end
 
+      # This creates a seat and saves the @booking (booking must exist to create an association)
       s = Seat.new(seatNumber: seat[0], booking: @booking, showing: showing, row: seat[1], col: seat[2])
-      # the above line above saves the booking; as an association must be made
+      
       if !s.save
         # if the seats are already taken we cancel the booking
         # dependencies ensure the previous seats are also destroyed with it
@@ -48,10 +50,13 @@ class BookingsController < ApplicationController
       end
     end
 
+    # Send the id of the booking back
     data = {
       :booking_id => @booking.id
     }
 
+
+    # Save the booking
     respond_to do |format|
       if @booking.save
         format.json { render json: data, status: :created, location: @booking }
@@ -83,6 +88,7 @@ class BookingsController < ApplicationController
       params.require(:booking).permit(:id, :seats)
     end
 
+    # Check the current user is not an admin, and that this booking belongs to them
     def check_user
       if !current_user.admin
         if @booking.user != current_user

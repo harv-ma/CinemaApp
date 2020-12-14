@@ -27,6 +27,7 @@
                   = link_to 'View', showing
 
 
-        
-    = link_to 'Edit', edit_film_path(@film), class: 'edit-button'
+    - if user_signed_in?
+      - if current_user.admin?    
+        = link_to 'Edit', edit_film_path(@film), class: 'edit-button'
     = link_to 'Back', films_path, class: 'back-button'

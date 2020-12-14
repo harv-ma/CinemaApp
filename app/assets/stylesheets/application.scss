@@ -71,11 +71,11 @@ $dark_red: #6B0F11;
         }
     }
 
-    margin-bottom: 20px;
+    
 }
 
 .main-footer {
-     background-color: $nice_red;
+     background-color: $dark_red;
      padding: 10px;
      width: 100%;
      position: relative;
@@ -86,7 +86,7 @@ $dark_red: #6B0F11;
 
      span {
         font-style: italic;
-        color: $rich_black;
+        color: $nice_red;
     }
 
      p {

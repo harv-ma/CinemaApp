@@ -10,11 +10,14 @@ class FilmsController < ApplicationController
   # GET /films
   # GET /films.json
   def index
-    
+    # Get future film showing
     showings = Showing.where("startTime > ?", Time.now)
 
+    # Get unique film entries
     @futureFilms = showings.map{ |s| s.film}
     @futureFilms = @futureFilms.uniq { |f| f.title }
+
+    # Get all films
     @allFilms = Film.all
   end
 
@@ -81,8 +84,5 @@ class FilmsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def film_params
       params.require(:film).permit(:title, :synopsis, :rating, :language, :release_date, :poster, :duration)
-    end
-
-
-    
+    end    
 end

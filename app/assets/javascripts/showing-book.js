@@ -14,6 +14,7 @@ var seats = [];
 $( document ).on('turbolinks:load', function() {
   console.log("Showing-show Loaded");
     
+    // Select the container we setup to contain the seat chart
     var id = $('#seats-partial').data('showing');
     var seatLayout = undefined;
     
@@ -25,32 +26,35 @@ $( document ).on('turbolinks:load', function() {
       method: 'POST',
       dataType: 'JSON',
       success: (data) => {
+          // Setup layout and unavailable seats
           var unavailableSeats = data.seats;
           seatLayout = data.layout;
-          console.log(seatLayout, unavailableSeats);
+          // Setup the Jquery seat chart
           setupJqueryChart(seatLayout, unavailableSeats);
-          console.log("Success!");
           
+          // Setup make booking button
           $('#make-booking').on('click', async function() {
+            // hide alerts
             $('#alerts').css( {'display': 'none'} );
             // disable button
             $('#make-booking').text( 'Please Wait...' );
             $('#make-booking').addClass('disabled');
             $('#make-booking').prop('disabled', true);
             
-            console.log("Seats Booked:", seats);
-
+            // wait until we have a response from server if we successfully booked the seats or not
             let outcome = await bookSeats(id);
 
+            
             if (outcome != undefined) {
-              console.log("Booking made");
+              // If successful hide the seat form and display success message
               $('.booking-form').css({'display': 'none'});
               $('#alerts').removeClass( 'alert-danger' );
               $('#alerts').addClass( 'booking-success' );
               $('#alerts p').text( 'Booking successful!' );
               $('#alerts span').text( 'You will be redirected to your booking momentarily.' );
               $('#alerts').css( {'display': 'block'} );
-    
+              
+              // Redirect after 5secs to booking page
               setTimeout(
                 function() 
                 {
@@ -58,7 +62,7 @@ $( document ).on('turbolinks:load', function() {
                 }, 5000);
 
             } else {
-              console.log("Unable to make booking");
+              // If unsuccessful display alert message
               $('#alerts').css( {'display': 'block'} );
               $('#alerts').addClass( 'alert-danger' );
               $('#alerts').removeClass( 'booking-success' );
@@ -71,7 +75,7 @@ $( document ).on('turbolinks:load', function() {
           });
         },
         error: (e) => {
-            console.log('Error');
+           console.log("Error");
           }
       });
 });
@@ -96,6 +100,10 @@ function calculateRowCol(seatNumber) {
   return id;
 }
 
+/**
+ * Updates the price total.
+ * @param {Integer} sc 
+ */
 function recalculateTotal(sc) {
     var total = 0;
   
@@ -115,6 +123,7 @@ function recalculateTotal(sc) {
 function bookSeats(id) {
 
   return new Promise(function (resolve, reject) {
+    // Post to the server trying to make a booking for the showing with "id"
     $.ajax({
       url: `/showings/${id}/book`,
       method: 'POST',
@@ -123,14 +132,16 @@ function bookSeats(id) {
         seats: seats
       },
       success: (data) => {
+        // If it succeedds resolve with the data being the booking_id
           resolve(data.booking_id);
         },
         error: (e) => {
           console.log("ERROR: Unable to book seats!");
+          // if unsuccessful reject with error code
           reject(e);
-          }
+        }
       });
-    }).catch (() => {});
+    }).catch (() => { console.log("ERROR: Unable to book seats!"); });
 }
 
 /**
@@ -140,7 +151,6 @@ function bookSeats(id) {
  */
 function setupJqueryChart(seatLayout, unavailableSeats) {
     var firstSeatLabel = 1;
-    var $cart = $('#selected-seats');
     var $counter = $('#counter');
     var $total = $('#total');
     sc = $('#seat-map').seatCharts({
@@ -165,7 +175,7 @@ function setupJqueryChart(seatLayout, unavailableSeats) {
           },
         },
         legend : {
-          node : $('#legend'),
+          node : $('#legend'), // Our seat types
             items : [
             [ 's', 'available',   'Standard' ],
             [ 'd', 'available',   'Disabled'],
@@ -174,48 +184,31 @@ function setupJqueryChart(seatLayout, unavailableSeats) {
         },
         click: function () {
           if (this.status() == 'available') {
-            console.log("Adding ", this.settings);
-            //seats.push(this.settings.id)
-            
+            // add the seat to the seat list
             seats.push(
                  [this.settings.label,
                  this.settings.row + 1,
                  this.settings.column + 1]
             );
-
-            console.log(seats);
             
-            //let's create a new <li> which we'll add to the cart items
-            // $('<li>'+this.data().category+' Seat # '+this.settings.label+': <b>$'+this.data().price+'</b> <a href="#" class="cancel-cart-item">[cancel]</a></li>')
-            //   .attr('id', 'cart-item-'+this.settings.id)
-            //   .data('seatId', this.settings.id)
-            //   .appendTo($cart);
-           
+            // update total
             $counter.text(sc.find('selected').length+1);
             $total.text(recalculateTotal(sc)+this.data().price);
             
             return 'selected';
           } else if (this.status() == 'selected') {
-            // Remove seat
+            // Remove seat: find seat by id and remove it
             for (var z = 0; z < seats.length; z++) {
-              console.log("S: " +  seats[0][0] + " ID: " + this.settings.label);
               if (seats[z][0] == parseInt(this.settings.label)) {
                 seats.splice(z, 1);
                 break;
               }
             }
 
-            console.log(seats);
-            
-            // //update the counter
-            //   $counter.text(sc.find('selected').length-1);
-            //   //and total
+
+              // update total
               $total.text(recalculateTotal(sc)-this.data().price);
               
-              //remove the item from our cart
-              // $('#cart-item-'+this.settings.id).remove();
-              
-              //seat has been vacated
               return 'available';
           } else if (this.status() == 'unavailable') {
               //seat has been already booked
@@ -225,14 +218,8 @@ function setupJqueryChart(seatLayout, unavailableSeats) {
           }
         }
       });
-  
-      //this will handle "[cancel]" link clicks
-      $('#selected-seats').on('click', '.cancel-cart-item', function () {
-        //let's just trigger Click event on the appropriate seat, so we don't have to repeat the logic here
-        sc.get($(this).parents('li:first').data('seatId')).click();
-      });
-  
-      //let's pretend some seats have already been booked
+      
+      // set the seats that are unavailable as taken, i.e. not clickable and different colour
       sc.get(
         unavailableSeats
         ).status('unavailable');   

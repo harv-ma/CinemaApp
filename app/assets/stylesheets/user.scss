@@ -217,3 +217,24 @@ $dark_red: #6B0F11;
         font-size: 12pt;
     }
 }
+
+.forgot-password {
+    label {
+        font-style: italic;
+        color: $nice_red;
+    }
+
+    input {
+        background-color: $nice_red;
+        color: white;
+        border: 0;
+        padding: 5px;
+        border-radius: 5px;
+        margin: 10px 0;
+    }
+
+    a {
+        color: $nice_red;
+        font-style: italic;
+    }
+}

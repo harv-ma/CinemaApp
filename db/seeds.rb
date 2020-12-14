@@ -136,16 +136,23 @@ room2 = Room.create(
     format: 'B'
 )
 
+room3 = Room.create(
+    id: 3,
+    numberOfSeats: 70,
+    WheelChair_Access: true,
+    format: 'C'
+)
+
 # END
 
 # Showings Seeds
 test = Showing.where(id: 1).first
 test.delete if test
 
-showing = Showing.create(
+showing1 = Showing.create(
     id: 1,
-    startTime: '2020-02-01 16:30:00',
-    finishTime: '2020-02-01 18:00:00',
+    startTime: Time.now + 4.day + 28.hours,
+    finishTime: Time.now + 4.day + 28.hours + film1.duration.hours,
     film: film1,
     room: room1
 )
@@ -153,11 +160,188 @@ showing = Showing.create(
 test = Showing.where(id: 2).first
 test.delete if test
 
-showing1 = Showing.create(
+showing2 = Showing.create(
     id: 2,
-    startTime: '2020-01-21 12:25:00',
-    finishTime: '2020-02-01 14:25:00',
+    startTime: Time.now + 4.day + 14.hours,
+    finishTime: Time.now + 4.day + 14.hours + film1.duration.hours,
+    film: film1,
+    room: room2
+)
+
+test = Showing.where(id: 3).first
+test.delete if test
+
+showing3 = Showing.create(
+    id: 3,
+    startTime: Time.now + 4.day + 8.hours,
+    finishTime: Time.now + 4.day + 8.hours + film1.duration.hours,
+    film: film1,
+    room: room1
+)
+
+test = Showing.where(id: 4).first
+test.delete if test
+
+showing4 = Showing.create(
+    id: 4,
+    startTime: Time.now + 4.day + 6.hours,
+    finishTime: Time.now + 4.day + 6.hours + film1.duration.hours,
+    film: film1,
+    room: room1
+)
+
+test = Showing.where(id: 5).first
+test.delete if test
+
+showing5 = Showing.create(
+    id: 5,
+    startTime: Time.now + 4.day + 2.hours,
+    finishTime: Time.now + 4.day + 2.hours + film2.duration.hours,
     film: film2,
+    room: room2
+)
+
+test = Showing.where(id: 6).first
+test.delete if test
+
+showing6 = Showing.create(
+    id: 6,
+    startTime: Time.now + 1.day,
+    finishTime: Time.now + 1.day + film2.duration.hours,
+    film: film2,
+    room: room2
+)
+
+test = Showing.where(id: 7).first
+test.delete if test
+
+showing7 = Showing.create(
+    id: 7,
+    startTime: Time.now + 2.day,
+    finishTime: Time.now + 2.day + film2.duration.hours,
+    film: film2,
+    room: room2
+)
+
+test = Showing.where(id: 8).first
+test.delete if test
+
+showing8 = Showing.create(
+    id: 8,
+    startTime: Time.now + 3.day,
+    finishTime: Time.now + 3.day + film3.duration.hours,
+    film: film3,
+    room: room3
+)
+
+test = Showing.where(id: 9).first
+test.delete if test
+
+showing9 = Showing.create(
+    id: 9,
+    startTime: Time.now + 4.day,
+    finishTime: Time.now + 4.day + film3.duration.hours,
+    film: film3,
+    room: room3
+)
+
+test = Showing.where(id: 10).first
+test.delete if test
+
+showing10 = Showing.create(
+    id: 10,
+    startTime: Time.now + 2.day,
+    finishTime: Time.now + 2.day + film3.duration.hours,
+    film: film3,
+    room: room2
+)
+
+test = Showing.where(id: 11).first
+test.delete if test
+
+showing11 = Showing.create(
+    id: 11,
+    startTime: Time.now + 3.day,
+    finishTime: Time.now + 3.day + film3.duration.hours,
+    film: film3,
+    room: room3
+)
+
+
+test = Showing.where(id: 13).first
+test.delete if test
+
+showing13 = Showing.create(
+    id: 13,
+    startTime: Time.now + 6.day,
+    finishTime: Time.now + 6.day + film5.duration.hours,
+    film: film5,
+    room: room2
+)
+
+test = Showing.where(id: 14).first
+test.delete if test
+
+showing14 = Showing.create(
+    id: 14,
+    startTime: Time.now + 5.day,
+    finishTime: Time.now + 5.day + film6.duration.hours,
+    film: film6,
+    room: room3
+)
+
+test = Showing.where(id: 15).first
+test.delete if test
+
+showing15 = Showing.create(
+    id: 15,
+    startTime: Time.now + 2.day + 3.hours,
+    finishTime: Time.now + 2.day + 3.hours + film7.duration.hours,
+    film: film7,
+    room: room1
+)
+
+test = Showing.where(id: 16).first
+test.delete if test
+
+showing16 = Showing.create(
+    id: 16,
+    startTime: Time.now + 6.day,
+    finishTime: Time.now + 6.day + film7.duration.hours,
+    film: film7,
+    room: room3
+)
+
+test = Showing.where(id: 17).first
+test.delete if test
+
+showing17 = Showing.create(
+    id: 17,
+    startTime: Time.now + 2.day + 3.hours,
+    finishTime: Time.now + 2.day + 3.hours + film1.duration.hours,
+    film: film1,
+    room: room1
+)
+
+test = Showing.where(id: 18).first
+test.delete if test
+
+showing18 = Showing.create(
+    id: 18,
+    startTime: Time.now + 6.day + 6.hours,
+    finishTime: Time.now + 6.day + 6.hours + film1.duration.hours,
+    film: film1,
+    room: room3
+)
+
+test = Showing.where(id: 19).first
+test.delete if test
+
+showing19 = Showing.create(
+    id: 19,
+    startTime: Time.now + 6.day + 5.hours,
+    finishTime: Time.now + 6.day + 5.hours + film1.duration.hours,
+    film: film1,
     room: room2
 )
 
@@ -169,7 +353,7 @@ admin = User.new
 admin.forename = 'Harvey'
 admin.surname = 'M-A'
 admin.phonenumber = '077777777'
-admin.email = 'hm00929@surrey.ac.uk'
+admin.email = 'admin@example.com'
 admin.password = 'password' # this would never be done in real world
 admin.password_confirmation = 'password' # this would never be done in real world
 admin.admin = true
@@ -179,7 +363,7 @@ user = User.new
 user.forename = 'Testuser'
 user.surname = 'Smith'
 user.phonenumber = '0777213123'
-user.email = 'example@example.com'
+user.email = 'user@example.com'
 user.password = 'password'
 user.password_confirmation = 'password'
 user.admin = false
@@ -190,26 +374,39 @@ user.save!
 # Booking Seeds
 
 booking1 = Booking.create(
-    showing: showing,
+    showing: showing6,
     user: user,
 )
 
 booking2 = Booking.create(
+    showing: showing4,
+    user: admin,
+)
+
+booking3 = Booking.create(
+    showing: showing2,
+    user: admin,
+)
+
+booking4 = Booking.create(
     showing: showing1,
     user: admin,
 )
 
-
-
-
-
+booking5 = Booking.create(
+    showing: showing8,
+    user: admin,
+)
 # END
 
 # Seats Seeds
+#
+#   CHANGE SEAT NUMBERS AND ROW/COL VALUES
+#
 seat = Seat.create(
     seatNumber: 48,
     booking: booking1,
-    showing: showing,
+    showing: booking1.showing,
     row: 4,
     col: 3,
 )
@@ -217,7 +414,39 @@ seat = Seat.create(
 seat2 = Seat.create(
     seatNumber: 105,
     booking: booking2,
-    showing: showing,
+    showing: booking2.showing,
+    row: 6,
+    col: 5,
+)
+
+seat3 = Seat.create(
+    seatNumber: 105,
+    booking: booking2,
+    showing: booking2.showing,
+    row: 6,
+    col: 5,
+)
+
+seat4 = Seat.create(
+    seatNumber: 105,
+    booking: booking3,
+    showing: booking3.showing,
+    row: 6,
+    col: 5,
+)
+
+seat5 = Seat.create(
+    seatNumber: 105,
+    booking: booking4,
+    showing: booking4.showing,
+    row: 6,
+    col: 5,
+)
+
+seat6 = Seat.create(
+    seatNumber: 105,
+    booking: booking5,
+    showing: booking5.showing,
     row: 6,
     col: 5,
 )
