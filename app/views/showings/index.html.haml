@@ -12,11 +12,11 @@
             - if film.poster.attached?
               %img{:src => "#{url_for(film.poster)}"}
             - else
-              %p "No image available"
+              %p= t('.no_image')
   -# Films with their showings for the next week in rows
   %hr{'class' => 'custom-hr'}
   %div{'class' => 'container showing-week'}
-    %h2 Next week showings
+    %h2= t('.message')
     - @films.each do |film| # For each film get next weeks showings for it
       - @filmShowings = @showings.where(film: film) # putting them in a container with a scrollbbar
       %div{'class' => 'showing-week-container d-flex'}
@@ -24,7 +24,7 @@
           - if film.poster.attached?
             %img{:src => "#{url_for(film.poster)}"}
           - else
-            %p "No image available"
+            %p= t('.no_image')
 
         %div{'class' => 'showing-week-showing-container'}   
           - @filmShowings.each do |showing|
@@ -35,4 +35,4 @@
               %p{'class' => 'view-button'}
                 = link_to 'View', showing_path(showing)
 - else
-  %h1{'class' => 'sorry-message'} Sorry there are no showings this week
+  %h1{'class' => 'sorry-message'}= t('.no_showings')

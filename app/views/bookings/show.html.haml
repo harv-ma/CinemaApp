@@ -18,26 +18,26 @@
                         %h1= @film.title
                     %div{'class' => 'booking-film-content'}
                         %p
-                            %span= "Duration: "
+                            %span= t('.duration')
                             = "#{@film.duration} hours"
                         %p
-                            %span= "Language: "
+                            %span= t('.language')
                             = @film.language
                         %p
-                            %span= "Synopsis "
+                            %span= t('.synopsis')
                             = @film.synopsis
                 %div{'class' => 'col-4 booking-showing'}
                     // showing details
                     %div{'class' => 'booking-showing-header'}
-                        %h2= "Details"
-                        %span= "When "
+                        %h2= t('.details')
+                        %span= t('.when')
                         %p{'class' => 'text-right'}
                             = "#{@showing.startTime.strftime('%d/%m/%Y')} "
                             %br
                                 = "#{@showing.startTime.strftime('%I:%M%p')}"
             %div{'class' => 'row'}
                 %div{'class' => 'col-12 booking-seats'}
-                    %h1 Your seats
+                    %h1= t('.seatTitle')
                     - @seats.each do |seat|
                         %span{'class' => 'seat'}= seat.seatNumber
 

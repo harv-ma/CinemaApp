@@ -11,5 +11,5 @@ class Film < ApplicationRecord
     # Use of active_storage gem
     has_one_attached :poster
 
-    has_many :showings    
+    has_many :showings, dependent: :destroy
 end

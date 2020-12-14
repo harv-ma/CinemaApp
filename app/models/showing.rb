@@ -13,6 +13,8 @@ class Showing < ApplicationRecord
   # Associations
   belongs_to :film
   belongs_to :room
+
+  has_many :booking, dependent: :destroy
   
   
   private

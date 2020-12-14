@@ -8,20 +8,20 @@
             - if @film.poster.attached?
                 %img{:src => "#{url_for(@film.poster)}"}
             - else
-                %p "No image available"
+                %p= t('no_image')
         %div{'class' => 'col-6 booking-film'}
             // film details
             %div{'class' => 'booking-film-header'}
                 %h1= @film.title
             %div{'class' => 'booking-film-content'}
                 %p
-                    %span= "Duration "
+                    %span= t('.duration')
                     = "#{@film.duration} hours"
                 %p
-                    %span= "Language "
+                    %span= t('.language')
                     = @film.language
                 %p
-                    %span= "Synopsis "
+                    %span= t('.synopsis')
                     = @film.synopsis
         %div{'class' => 'col-3 booking-showing'}
             // showing details
@@ -34,8 +34,8 @@
                     = "#{@showing.startTime.strftime('%I:%M%p')}"
     %div{'class' => 'alert', 'id' => 'alerts', 'style' => 'display: none;'}
         %div{'class' => 'details'}
-            %p 
-            %span
+            %p= t('.details')
+            %span= t('.when')
     %div{'class' => 'row booking-form'}
         %div{'class' => 'col-12'}
             - if user_signed_in?

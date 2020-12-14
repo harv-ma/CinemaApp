@@ -4,17 +4,17 @@
       - if @showing.film.poster.attached?
         %img{:src => "#{url_for(@showing.film.poster)}"}
       - else
-        %p "No image available"
+        %p= t('no_image')
     %div{'class' => 'col-7 showing-title'}
       %h1= @showing.film['title']
       %div{'class' => 'mt-2 showing-details'}
         %h4
-          %span= "Start Time: "
+          %span= t('.startTime')
           = @showing.startTime.strftime('%d/%m/%Y')
           = " at "
           =  @showing.startTime.strftime('%I:%M%p')
         %h4
-          %span= "Duration: "
+          %span= t('.duration')
           = "#{@showing.film.duration}hours"
         %h5= "Room: #{@showing.room.id}"
         %p= @showing.film.synopsis

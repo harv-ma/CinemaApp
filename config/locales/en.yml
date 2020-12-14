@@ -38,6 +38,10 @@ en:
   login_partial_title: You must have an account to make a booking!
   login_partial_detail: Login below, or sign-up to make a booking
 
+  general_links: General Links
+  admin_links: Admin Links
+
+  no_image: No image available
 
   home:
     home:
@@ -58,4 +62,34 @@ en:
     request_contact:
       no_email: You must supply an email address
       email_sent: Thank you. We will be in touch shortly.
+  bookings:
+    show:
+      duration: "Duration: "
+      language: "Language: "
+      synopsis: "Synopsis: "
+      details: "Details "
+      when: "When "
+      seatTitle: Your Seats
+  films:
+    show:
+      book: "Book a seat now:"
+  showings:
+    book:
+      duration: "Duration: "
+      language: "Language: "
+      synopsis: "Synopsis: "
+      details: "Details "
+      when: "When "
+    index:
+      message: Next week showings
+      no_showings: Sorry there are no showings this week
+    show:
+      startTime: "Start Time: "
+      at: " at "
+      duration: "Duration: "
+      
+   
+    
+
+      
     
