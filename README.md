@@ -22,11 +22,8 @@ Cinema books is a website specifically for making and managing film showings. Ad
 
 ------------
 ### Setup
-1. **Download** code or **clone** this repository
-2. Run `bundle install`
-3. Run `rails db:migrate`
-4. Run `rails db:seed`
-5. Run `rails s`
+
+Once you download or clone the repository, everything should be good to go. Dumby data is already added. If you want to wipe the data, run `rake rb:reset` then `rake db:seed`.
 
 Now it should be up and running at localhost:3000.
 
