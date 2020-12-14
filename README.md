@@ -22,11 +22,12 @@ Cinema books is a website specifically for making and managing film showings. Ad
 
 ------------
 ### Setup
-1. Download code or clone this repository
-2. Run **bundle install**
-3. Run **rails db:migrate**
-4. Run **rails db:seed**
-5. Run **rails s**
+1. **Download** code or **clone** this repository
+2. Run `bundle install`
+3. Run `rails db:migrate`
+4. Run `rails db:seed`
+5. Run `rails s`
+
 Now it should be up and running at localhost:3000.
 
 ------------
@@ -39,6 +40,7 @@ A user can edit their profile, view showings and film pages, make bookings for s
 Guests can view showings, films and booking pages, but are not able to make bookings; you must be signed in to do this.
 ### Tests
 Each model, mailer and controller has their own tests. All tests are run using the command below. 
+
 ```
 rake test
 ```
@@ -50,3 +52,12 @@ rake test
 - Room
 - Booking
 - Seat
+
+#### Code Mentions
+*Custom JS:* `showing-book`, `showing-index`, these take care of: using AJAX to book seats using Jquery Seats chart to book seats with live updates, and to setup the slider on the showing index page, respectively.
+
+*Seat Layouts:* the `seat-layouts.json` contains each format for room layouts, if you want more they can be easily added to this file just give a different name. They must conform to the symbols: s - standard seat, d - disabled seating, _ - for the walkways.
+
+#### P.S.
+If you have lots of deprecation warnings in your console, caused by ruby 2.7, you can run `export RUBYOPT='-W:no-deprecated'` to disable these warnings for the console session.
+
