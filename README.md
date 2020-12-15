@@ -23,7 +23,7 @@ Cinema books is a website specifically for making and managing film showings. Ad
 ------------
 ### Setup
 
-Once you download or clone the repository, run `rake db:migrate` then `rake db:seed` to be setup with some example data.
+Once you download or clone the repository, run `rails db:migrate RAILS_ENV=test` then `rake db:seed` to be setup with some example data.
 
 Run `rails s`
 
